@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Premanand S — Assistant Professor, ECG Deep Learning</title>
 <meta name="description" content="Premanand S, Assistant Professor at SRM Institute of Science and Technology. Biomedical signal processing, ECG classification, machine learning and deep learning.">
-<style>
+
+  <style>
   :root{
     --ink:#16232A;
     --paper:#EEF2F1;
@@ -27,7 +28,7 @@
   }
   h1,h2,h3{
     font-family:"Source Serif 4","Georgia",serif;
-    font-weight:600;
+    font-weight:600;  
     margin:0 0 .4em 0;
     letter-spacing:-0.01em;
   }
@@ -110,12 +111,150 @@
   .repo .r-desc{color:var(--muted);}
   .repo .r-stars{color:var(--muted);white-space:nowrap;font-size:.85rem;}
 
-  /* about / appointments */
-  .role-row{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line);}
-  .role-row:first-of-type{border-top:none;}
-  .role-row .yrs{color:var(--muted);font-size:.85rem;}
-  .role-row h3{font-size:1rem;margin-bottom:2px;}
-  .role-row .org{color:var(--muted);font-size:.9rem;}
+/* about / academic journey */
+.timeline{
+  position:relative;
+  margin-top:24px;
+  padding-left:150px;
+}
+
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:122px;
+  top:8px;
+  bottom:8px;
+  width:2px;
+  background:var(--line);
+}
+
+.t-item{
+  position:relative;
+  padding:0 0 34px 32px;
+}
+
+.t-item:last-child{
+  padding-bottom:8px;
+}
+
+.t-dot{
+  position:absolute;
+  left:-35px;
+  top:5px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:var(--paper);
+  border:3px solid var(--signal);
+  z-index:2;
+}
+
+.t-year{
+  position:absolute;
+  left:-150px;
+  top:0;
+  width:112px;
+  text-align:right;
+  color:var(--muted);
+  font-size:.82rem;
+  font-weight:600;
+  line-height:1.4;
+}
+
+.t-item h3{
+  font-size:1rem;
+  margin:0 0 5px;
+}
+
+.t-item .org{
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.5;
+}
+
+.t-details{
+  margin:12px 0 0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:.84rem;
+  line-height:1.7;
+}
+
+.t-details li{
+  margin-bottom:4px;
+}
+
+.t-details strong{
+  color:var(--ink);
+}
+
+.t-details span{
+  color:var(--muted);
+}
+
+/* current position */
+.t-item.current{
+  background:var(--paper-alt);
+  border-left:3px solid var(--signal);
+  border-radius:4px;
+  padding:18px 20px 22px 32px;
+  margin-left:-12px;
+  margin-bottom:10px;
+}
+
+.t-item.current .t-dot{
+  background:var(--signal);
+  border-color:var(--signal);
+  width:15px;
+  height:15px;
+  left:-37px;
+  top:20px;
+}
+
+.t-item.current .t-year{
+  top:18px;
+}
+
+/* mobile timeline */
+@media (max-width:640px){
+
+  .timeline{
+    padding-left:30px;
+  }
+
+  .timeline::before{
+    left:5px;
+  }
+
+  .t-item{
+    padding-left:25px;
+  }
+
+  .t-dot{
+    left:-31px;
+  }
+
+  .t-year{
+    position:static;
+    width:auto;
+    text-align:left;
+    margin-bottom:5px;
+    font-size:.78rem;
+  }
+
+  .t-item.current{
+    margin-left:-5px;
+    padding-left:25px;
+  }
+
+  .t-item.current .t-year{
+    position:static;
+  }
+
+  .t-item.current .t-dot{
+    left:-31px;
+  }
+}
 
   /* contact */
   .contact-grid{display:flex;flex-wrap:wrap;gap:26px 40px;}
@@ -260,24 +399,139 @@
   </div>
   <p>I build deep-learning architectures that read the human heart. My work sits at the meeting point of biomedical signal processing and modern AI — CNNs, Vision Transformers and hybrid blends applied to ECG waveforms — and I translate every paper I publish into something a beginner can actually learn from.</p>
 
-  <h3 style="margin-top:32px;font-size:1.1rem;">Appointments</h3>
-  <div class="role-row">
-    <div class="yrs">2026–Present</div>
-    <div><h3>Assistant Professor</h3><div class="org">SRM Institute of Science and Technology, Chennai</div></div>
-  </div>
-  <div class="role-row">
-    <div class="yrs">2019–2026</div>
-    <div><h3>Research Associate → Assistant Professor</h3><div class="org">Vellore Institute of Technology, Chennai · SENSE</div></div>
-  </div>
-  <div class="role-row">
-    <div class="yrs">2016–2019</div>
-    <div><h3>Assistant Professor</h3><div class="org">GKM College of Engineering and Technology, Chennai · ECE</div></div>
-  </div>
-  <div class="role-row">
-    <div class="yrs">2013–2015</div>
-    <div><h3>Teaching Assistant · TCS Research Scholar</h3><div class="org">Amrita Vishwa Vidyapeetham, Ettimadai · ECE</div></div>
+  <h3 style="margin-top:32px;font-size:1.1rem;">Academic Journey</h3>
+
+<div class="timeline">
+
+  <!-- 2026 – Present -->
+  <div class="t-item current">
+    <span class="t-dot"></span>
+
+    <div class="t-year">July 2026 – Present</div>
+
+    <h3>Assistant Professor</h3>
+
+    <div class="org">
+      Department of Computational Intelligence,<br>
+      SRM Institute of Science and Technology,<br>
+      Kattankulathur Campus
+    </div>
   </div>
 
+
+  <!-- 2019 – 2026 -->
+  <div class="t-item">
+    <span class="t-dot"></span>
+
+    <div class="t-year">2019 – 2026</div>
+
+    <h3>Vellore Institute of Technology, Chennai</h3>
+
+    <div class="org">
+      School of Electronics Engineering (SENSE)
+    </div>
+
+    <ul class="t-details">
+
+      <li>
+        <strong>Research Associate</strong>
+        <span> · July 2019 – March 2020</span>
+      </li>
+
+      <li>
+        <strong>Assistant Professor Junior</strong>
+        <span> · March 2020 – August 2022</span>
+      </li>
+
+      <li>
+        <strong>Assistant Professor (Contract)</strong>
+        <span> · September 2022 – June 2026</span>
+      </li>
+
+      <li>
+        <strong>Courses Delivered:</strong>
+        Problem Solving using Python, Computer Programming:
+        Python, Computer Programming: Java, Embedded C Programming
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!-- 2016 – 2019 -->
+  <div class="t-item">
+    <span class="t-dot"></span>
+
+    <div class="t-year">2016 – 2019</div>
+
+    <h3>Assistant Professor</h3>
+
+    <div class="org">
+      Department of Electronics and Communication Engineering,<br>
+      GKM College of Engineering and Technology, Chennai
+    </div>
+  </div>
+
+
+  <!-- 2013 – 2015 -->
+  <div class="t-item">
+    <span class="t-dot"></span>
+
+    <div class="t-year">2013 – 2015</div>
+
+    <h3>Amrita Vishwa Vidyapeetham</h3>
+
+    <div class="org">
+      Ettimadai · Department of Electronics and Communication Engineering
+    </div>
+
+    <ul class="t-details">
+
+      <li>
+        <strong>Teaching Assistant</strong>
+        <span> · 2013 – 2014</span>
+      </li>
+
+      <li>
+        <strong>TCS Research Scholar</strong>
+        <span> · 2014 – 2015</span>
+      </li>
+
+    </ul>
+  </div>
+
+
+  <!-- 2012 – 2013 -->
+  <div class="t-item">
+    <span class="t-dot"></span>
+
+    <div class="t-year">2012 – 2013</div>
+
+    <h3>Assistant Professor</h3>
+
+    <div class="org">
+      Department of Biomedical Engineering,<br>
+      Vel Tech Multi Tech Dr. Rangarajan Dr. Sakunthala
+      Engineering College, Avadi
+    </div>
+  </div>
+
+
+  <!-- 2011 – 2012 -->
+  <div class="t-item">
+    <span class="t-dot"></span>
+
+    <div class="t-year">2011 – 2012</div>
+
+    <h3>Assistant Professor</h3>
+
+    <div class="org">
+      Department of Electronics and Communication Engineering,<br>
+      VSB Engineering College, Karur
+    </div>
+  </div>
+
+</div>
   <h3 style="margin-top:32px;font-size:1.1rem;">Education</h3>
   <div class="role-row">
     <div class="yrs">2019–present</div>
