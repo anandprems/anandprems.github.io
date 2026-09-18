@@ -532,19 +532,224 @@
   </div>
 
 </div>
-  <h3 style="margin-top:32px;font-size:1.1rem;">Education</h3>
-  <div class="role-row">
-    <div class="yrs">2019–present</div>
-    <div><h3>Ph.D., Artificial Intelligence & Biomedical Signal Analytics</h3><div class="org">Vellore Institute of Technology, Chennai — thesis submitted</div></div>
+<h3 style="margin-top:32px;font-size:1.1rem;">Education</h3>
+
+<div class="edu-timeline">
+
+  <!-- Ph.D. -->
+  <div class="edu-item highest">
+    <div class="edu-dot">Ph.D.</div>
+
+    <div class="edu-year">2019 – Present</div>
+
+    <div class="edu-content">
+      <h3>Artificial Intelligence &amp;<br>
+          Biomedical Signal Analytics</h3>
+
+      <div class="edu-degree">
+        Doctor of Philosophy
+      </div>
+
+      <div class="edu-org">
+        Vellore Institute of Technology, Chennai
+      </div>
+
+      <span class="edu-status">Thesis submitted</span>
+    </div>
   </div>
-  <div class="role-row">
-    <div class="yrs">2009–2011</div>
-    <div><h3>M.E., Power Electronics and Drives</h3><div class="org">Rajalakshmi Engineering College, Chennai</div></div>
+
+
+  <!-- M.E. -->
+  <div class="edu-item">
+    <div class="edu-dot">M.E.</div>
+
+    <div class="edu-year">2009 – 2011</div>
+
+    <div class="edu-content">
+      <h3>Power Electronics and Drives</h3>
+
+      <div class="edu-degree">
+        Master of Engineering
+      </div>
+
+      <div class="edu-org">
+        Rajalakshmi Engineering College, Chennai
+      </div>
+    </div>
   </div>
-  <div class="role-row">
-    <div class="yrs">2005–2009</div>
-    <div><h3>B.Tech., Electronics and Communication Engineering</h3><div class="org">Amrita Vishwa Vidyapeetham, Bangalore</div></div>
+
+
+  <!-- B.Tech. -->
+  <div class="edu-item">
+    <div class="edu-dot">B.Tech.</div>
+
+    <div class="edu-year">2005 – 2009</div>
+
+    <div class="edu-content">
+      <h3>Electronics and Communication Engineering</h3>
+
+      <div class="edu-degree">
+        Bachelor of Technology
+      </div>
+
+      <div class="edu-org">
+        Amrita Vishwa Vidyapeetham, Bangalore
+      </div>
+    </div>
   </div>
+
+</div>
+
+  /* =========================
+   EDUCATION TIMELINE
+   ========================= */
+
+.edu-timeline{
+  position:relative;
+  margin-top:24px;
+  padding-left:95px;
+}
+
+/* vertical line */
+.edu-timeline::before{
+  content:"";
+  position:absolute;
+  left:36px;
+  top:18px;
+  bottom:18px;
+  width:2px;
+  background:var(--line);
+}
+
+/* each education milestone */
+.edu-item{
+  position:relative;
+  display:grid;
+  grid-template-columns:105px 1fr;
+  gap:22px;
+  padding:0 0 34px 0;
+}
+
+.edu-item:last-child{
+  padding-bottom:8px;
+}
+
+/* degree badge */
+.edu-dot{
+  position:absolute;
+  left:-78px;
+  top:0;
+
+  min-width:52px;
+  height:52px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:0 7px;
+
+  border-radius:50%;
+
+  background:var(--paper);
+  border:2px solid var(--signal);
+
+  color:var(--signal-dark);
+
+  font-family:"Source Serif 4",serif;
+  font-size:.72rem;
+  font-weight:600;
+
+  z-index:2;
+}
+
+/* highest/current qualification */
+.edu-item.highest .edu-dot{
+  background:var(--signal-dark);
+  border-color:var(--signal-dark);
+  color:#fff;
+}
+
+.edu-year{
+  font-size:.82rem;
+  font-weight:600;
+  color:var(--muted);
+  padding-top:5px;
+}
+
+.edu-content h3{
+  font-size:1.05rem;
+  line-height:1.35;
+  margin:0 0 5px;
+}
+
+.edu-degree{
+  font-size:.82rem;
+  color:var(--signal-dark);
+  margin-bottom:4px;
+}
+
+.edu-org{
+  color:var(--muted);
+  font-size:.88rem;
+  line-height:1.5;
+}
+
+.edu-status{
+  display:inline-block;
+  margin-top:8px;
+  padding:2px 9px;
+
+  border:1px solid var(--line);
+  border-radius:2px;
+
+  color:var(--signal-dark);
+  font-size:.72rem;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media(max-width:640px){
+
+  .edu-timeline{
+    padding-left:48px;
+  }
+
+  .edu-timeline::before{
+    left:10px;
+    top:18px;
+    bottom:18px;
+  }
+
+  .edu-item{
+    display:block;
+    padding-left:0;
+    padding-bottom:32px;
+  }
+
+  .edu-dot{
+    left:-47px;
+    width:42px;
+    min-width:42px;
+    height:42px;
+
+    font-size:.62rem;
+  }
+
+  .edu-year{
+    padding-top:0;
+    margin-bottom:5px;
+    font-size:.78rem;
+  }
+
+  .edu-content h3{
+    font-size:1rem;
+  }
+
+}
 </section>
 
 <section id="contact" class="wrap">
