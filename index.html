@@ -407,10 +407,110 @@
 
 }
     
-  /* contact */
-  .contact-grid{display:flex;flex-wrap:wrap;gap:26px 40px;}
-  .contact-grid a{font-size:.98rem;}
-  .contact-grid .label{display:block;font-size:.78rem;color:var(--muted);margin-bottom:3px;}
+/* =========================
+   CONTACT
+   ========================= */
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:10px;
+}
+
+.contact-card{
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  padding:16px 17px;
+
+  border:1px solid var(--line);
+  border-radius:5px;
+
+  background:rgba(255,255,255,.18);
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    border-color .2s ease;
+}
+
+.contact-card:hover{
+  transform:translateY(-2px);
+  background:var(--paper-alt);
+  border-color:var(--signal);
+
+  text-decoration:none;
+}
+
+
+/* icon */
+
+.contact-icon{
+  width:34px;
+  height:34px;
+
+  flex:0 0 34px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid var(--line);
+  border-radius:50%;
+
+  color:var(--signal-dark);
+
+  font-size:.82rem;
+  font-weight:600;
+}
+
+
+/* text */
+
+.contact-info{
+  min-width:0;
+}
+
+.contact-card .label{
+  display:block;
+
+  font-size:.72rem;
+  color:var(--muted);
+
+  margin-bottom:2px;
+
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+
+.contact-card .value{
+  display:block;
+
+  font-size:.88rem;
+  color:var(--ink);
+
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+
+/* mobile */
+
+@media(max-width:640px){
+
+  .contact-grid{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .contact-card{
+    padding:14px 15px;
+  }
+
+}
 
   footer{padding:30px 0 60px;text-align:center;color:var(--muted);font-size:.85rem;}
 
@@ -791,16 +891,89 @@
     <h2>Contact</h2>
     <span class="sub">Open to invited lectures, FDPs, reviewing, and joint work</span>
   </div>
-  <div class="contact-grid">
-    <div><span class="label">Email</span><a href="mailto:er.anandprem@gmail.com">er.anandprem@gmail.com</a></div>
-    <div><span class="label">Phone</span><a href="tel:+917358679961">+91 73586 79961</a></div>
-    <div><span class="label">Google Scholar</span><a href="https://scholar.google.com/citations?hl=en&user=cdeg524AAAAJ">scholar.google.com</a></div>
-    <div><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/premsanand/">linkedin.com/in/premsanand</a></div>
-    <div><span class="label">GitHub</span><a href="https://github.com/anandprems">github.com/anandprems</a></div>
-    <div><span class="label">YouTube</span><a href="https://www.youtube.com/@ByteClassroom-YT">ByteClassroom</a></div>
-    <div><span class="label">Medium</span><a href="https://medium.com/@er-anandprem">@er-anandprem</a></div>
-    <div><span class="label">X</span><a href="https://x.com/premsanand_byts">@premsanand_byts</a></div>
-  </div>
+<div class="contact-grid">
+
+  <a class="contact-card" href="mailto:er.anandprem@gmail.com">
+    <span class="contact-icon">✉</span>
+    <span class="contact-info">
+      <span class="label">Email</span>
+      <span class="value">er.anandprem@gmail.com</span>
+    </span>
+  </a>
+
+
+  <a class="contact-card" href="tel:+917358679961">
+    <span class="contact-icon">☎</span>
+    <span class="contact-info">
+      <span class="label">Phone</span>
+      <span class="value">+91 73586 79961</span>
+    </span>
+  </a>
+
+
+  <a class="contact-card"
+     href="https://scholar.google.com"
+     target="_blank">
+    <span class="contact-icon">◎</span>
+    <span class="contact-info">
+      <span class="label">Google Scholar</span>
+      <span class="value">scholar.google.com</span>
+    </span>
+  </a>
+
+
+  <a class="contact-card"
+     href="https://linkedin.com/in/premnsanand"
+     target="_blank">
+    <span class="contact-icon">in</span>
+    <span class="contact-info">
+      <span class="label">LinkedIn</span>
+      <span class="value">linkedin.com/in/premnsanand</span>
+    </span>
+  </a>
+
+
+  <a class="contact-card"
+     href="https://github.com/anandprems"
+     target="_blank">
+    <span class="contact-icon">⌘</span>
+    <span class="contact-info">
+      <span class="label">GitHub</span>
+      <span class="value">github.com/anandprems</span>
+    </span>
+  </a>
+
+
+  <a class="contact-card"
+     href="#">
+    <span class="contact-icon">▶</span>
+    <span class="contact-info">
+      <span class="label">YouTube</span>
+      <span class="value">ByteClassroom</span>
+    </span>
+  </a>
+
+
+  <a class="contact-card"
+     href="#">
+    <span class="contact-icon">M</span>
+    <span class="contact-info">
+      <span class="label">Medium</span>
+      <span class="value">@er-anandprem</span>
+    </span>
+  </a>
+
+
+  <a class="contact-card"
+     href="#">
+    <span class="contact-icon">𝕏</span>
+    <span class="contact-info">
+      <span class="label">X</span>
+      <span class="value">@premnsanand_byts</span>
+    </span>
+  </a>
+
+</div>
 </section>
 
 <footer>
