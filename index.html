@@ -1061,22 +1061,85 @@
 
 
 <section id="about" class="wrap">
+
   <div class="section-head">
     <h2>About</h2>
+  </div>
+
+  <div class="about-layout">
+
+    <div class="about-photo">
+      <img src="images/premanand.jpeg" alt="Premanand S.">
+    </div>
+
+    <div class="about-text">
+
+      <p>
+        I am an educator and AI researcher with a passion for teaching,
+        learning, and exploring how technology can solve meaningful problems.
+        Over the years, my journey has moved across teaching, biomedical
+        processing, artificial intelligence, and deep learning, while always
+        keeping learning at the centre.
+      </p>
+
+      <p>
+        I enjoy simplifying complex concepts, experimenting with new ideas,
+        guiding students through their learning journey, and sharing what I
+        learn through code, articles, and videos.
+      </p>
+
+      <p>
+        For me, education is not just about completing a syllabus — it is about
+        understanding why something matters, applying what we learn, exploring
+        beyond the classroom, and developing the confidence to create
+        something of our own.
+      </p>
+
+    </div>
 
   </div>
-<p>
-I am an educator and AI researcher with a passion for teaching, learning, and exploring how technology can solve meaningful problems. 
-Over the years, my journey has moved across teaching, biomedical signal processing, artificial intelligence, and deep learning, while always keeping learning at the centre.
-</p>
 
-<p>
-I enjoy simplifying complex concepts, experimenting with new ideas, guiding students through their learning journey, and sharing what I learn through code, articles, and videos.
-</p>
 
-<p>
-For me, education is not just about completing a syllabus — it is about understanding why something matters, applying what we learn, exploring beyond the classroom, and developing the confidence to create something of our own.
-</p>
+  /* =========================
+   ABOUT
+   ========================= */
+
+.about-layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:50px;
+  align-items:start;
+}
+
+.about-photo img{
+  width:100%;
+  max-width:260px;
+  display:block;
+  border:1px solid var(--line);
+  border-radius:4px;
+}
+
+.about-text p{
+  margin:0 0 18px;
+  color:var(--ink);
+  font-size:.96rem;
+  line-height:1.7;
+}
+
+/* mobile */
+
+@media(max-width:640px){
+
+  .about-layout{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+
+  .about-photo img{
+    max-width:220px;
+  }
+
+}
   <h3 style="margin-top:32px;font-size:1.1rem;">Academic Journey</h3>
 
 <div class="timeline">
