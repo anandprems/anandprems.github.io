@@ -177,6 +177,53 @@
   .repo .r-stars{color:var(--muted);white-space:nowrap;font-size:.85rem;}
 
 /* =========================
+   RESEARCH IN PROGRESS
+   ========================= */
+
+.research-item{
+  padding:22px 0;
+  border-top:1px solid var(--line);
+}
+
+.research-item:first-of-type{
+  border-top:none;
+  padding-top:0;
+}
+
+.research-item .status{
+  display:inline-block;
+  font-size:.7rem;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  padding:3px 10px;
+  border-radius:2px;
+  margin-bottom:10px;
+}
+
+.research-item .status.ongoing{
+  background:rgba(46,140,127,.13);
+  color:var(--signal-dark);
+}
+
+.research-item .status.submitted{
+  background:rgba(201,138,44,.15);
+  color:var(--amber);
+}
+
+.research-item h3{
+  font-size:1.05rem;
+  margin:0 0 8px;
+}
+
+.research-item p{
+  margin:0;
+  color:#33413E;
+  font-size:.95rem;
+  line-height:1.7;
+}
+
+/* =========================
    GUEST LECTURES
    ========================= */
 
@@ -964,6 +1011,7 @@
 <header>
   <nav class="wrap">
     <ul>
+      <li><a href="#publications">Publications</a></li>
       <li><a href="#research">Research</a></li>
       <li><a href="#knowledge-sharing">Knowledge Sharing</a></li>
       <li><a href="#teaching">Teaching</a></li>
@@ -1012,9 +1060,9 @@
   <div class="stat"><div class="n">100%</div><div class="l">NPTEL ML, IIT Madras</div></div>
 </div>
 
-<section id="research" class="wrap">
+<section id="publications" class="wrap">
   <div class="section-head">
-    <h2>Research</h2>
+    <h2>Publications</h2>
     <span class="sub">ECG classification · CNNs, Vision Transformers, hybrid models</span>
   </div>
 
@@ -1059,6 +1107,39 @@
   </div>
 
   <p style="margin-top:20px;"><a href="https://scholar.google.com/citations?hl=en&user=cdeg524AAAAJ">Full publication list on Google Scholar →</a></p>
+</section>
+
+<!-- =========================
+     RESEARCH IN PROGRESS
+     ========================= -->
+
+<section id="research" class="wrap">
+
+  <div class="section-head">
+    <h2>Research</h2>
+    <div class="sub">
+      A few things in motion right now — more to follow as they take shape.
+    </div>
+  </div>
+
+  <div class="research-item">
+    <span class="status ongoing">Ongoing</span>
+    <h3>Tamil-language interface for drone control</h3>
+    <p>Exploring what it takes to make autonomous drone systems operable entirely in Tamil — so operation isn't gated behind English fluency. Early days, but the direction is promising.</p>
+  </div>
+
+  <div class="research-item">
+    <span class="status submitted">Submitted</span>
+    <h3>A survey on deep learning in oncology</h3>
+    <p>A survey mapping how deep learning techniques are being applied across cancer diagnostics — currently under review at a journal. More details once it clears.</p>
+  </div>
+
+  <div class="research-item">
+    <span class="status ongoing">Ongoing</span>
+    <h3>12-lead ECG vs. single-lead wearable ECG</h3>
+    <p>Can a single-lead signal from something as small as an Apple Watch hold its own against the clinical 12-lead gold standard? Early results are... interesting. Watch this space.</p>
+  </div>
+
 </section>
 
 <section id="knowledge-sharing" class="wrap">
