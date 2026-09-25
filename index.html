@@ -176,6 +176,56 @@
   .repo .r-desc{color:var(--muted);}
   .repo .r-stars{color:var(--muted);white-space:nowrap;font-size:.85rem;}
 
+/* =========================
+   ABOUT — photo + text
+   ========================= */
+
+.about-layout{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:36px;
+  align-items:start;
+}
+
+.about-photo{
+  width:220px;
+  height:220px;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--paper-alt);
+  flex-shrink:0;
+}
+
+.about-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.about-text p{
+  margin:0 0 16px;
+  color:#33413E;
+  font-size:.98rem;
+  line-height:1.7;
+}
+
+.about-text p:last-child{
+  margin-bottom:0;
+}
+
+@media(max-width:640px){
+  .about-layout{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .about-photo{
+    width:160px;
+    height:160px;
+  }
+}
+
 /* about / academic journey */
 .timeline{
   position:relative;
@@ -1126,17 +1176,10 @@
 <section id="teaching" class="wrap">
 
   <div class="section-head">
-
     <h2>Teaching</h2>
-
     <div class="sub">
-      These are some of the subjects I am currently handling and the learning
-      resources I am sharing along the way. I have highlighted the programming
-      foundations that students should build strongly — concepts that go beyond
-      the classroom and can continue to support them through internships,
-      placements, and their early careers.
+      Courses and subjects I currently handle.
     </div>
-
   </div>
 
   <div class="teaching-grid">
