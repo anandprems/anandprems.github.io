@@ -418,6 +418,62 @@
   text-decoration:underline;
 }
 
+/* =========================
+   TEACHING
+   ========================= */
+
+.teaching-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+  margin-top:28px;
+}
+
+.teaching-card{
+  display:block;
+  padding:28px 24px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:8px;
+  text-decoration:none;
+  color:var(--ink);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.teaching-card:hover{
+  text-decoration:none;
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(22,35,42,.08);
+}
+
+.teaching-card h3{
+  font-size:1.15rem;
+  margin:0 0 12px;
+}
+
+.teaching-card p{
+  margin:0 0 18px;
+  color:var(--muted);
+  font-size:.94rem;
+  line-height:1.65;
+}
+
+.teaching-card span{
+  color:var(--signal-dark);
+  font-size:.9rem;
+  font-weight:600;
+}
+
+
+/* Mobile */
+
+@media(max-width:760px){
+
+  .teaching-grid{
+    grid-template-columns:1fr;
+  }
+
+}
 
 /* =========================
    MOBILE
@@ -466,6 +522,8 @@
   }
 
 }
+
+
     
 /* current position */
 .t-item.current{
@@ -1234,6 +1292,78 @@
   </div>
 
 </div>
+<!-- =========================
+     TEACHING
+     ========================= -->
+
+<section id="teaching" class="wrap">
+
+  <div class="section-head">
+    <h2>Teaching</h2>
+    <div class="sub">
+      Courses and subjects I currently handle.
+    </div>
+  </div>
+
+  <div class="teaching-grid">
+
+    <!-- Programming for Problem Solving -->
+    <a class="teaching-card"
+       href="https://github.com/anandprems/PPS_CINTET_SRM_2k26_2k27"
+       target="_blank">
+
+      <h3>Programming for Problem Solving</h3>
+
+      <p>
+        Problem solving, algorithms, flowcharts, pseudocode,
+        C programming, decision making, functions and practical
+        programming exercises.
+      </p>
+
+      <span>Explore course →</span>
+
+    </a>
+
+
+    <!-- Problem Solving using Python -->
+    <a class="teaching-card"
+       href="https://github.com/anandprems/BACSE101_Problem-Solving-using-Python"
+       target="_blank">
+
+      <h3>Problem Solving using Python</h3>
+
+      <p>
+        Programming fundamentals, problem solving, Python basics,
+        control structures, functions, data handling and practical
+        programming exercises.
+      </p>
+
+      <span>Explore course →</span>
+
+    </a>
+
+
+    <!-- Problem Solving using Java -->
+    <a class="teaching-card"
+       href="https://github.com/anandprems/BACSE102-Problem-Solving-Using-JAVA-Winter-2026"
+       target="_blank">
+
+      <h3>Problem Solving using Java</h3>
+
+      <p>
+        Programming fundamentals, object-oriented concepts,
+        Java syntax, control structures, methods, classes and
+        practical problem solving.
+      </p>
+
+      <span>Explore course →</span>
+
+    </a>
+
+  </div>
+
+</section>
+  
 <h3 style="margin-top:32px;font-size:1.1rem;">Education</h3>
 
 <div class="edu-timeline">
