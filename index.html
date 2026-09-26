@@ -84,23 +84,46 @@
    ========================= */
 
 .hero{
-  padding:64px 0 40px;
+  min-height:70vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:40px 0 40px;
   border-bottom:1px solid var(--line);
   text-align:center;
 }
 
+.hero-photo{
+  width:150px;
+  height:150px;
+  margin:0 auto 24px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--signal-dark);
+  box-shadow:0 8px 24px rgba(22,35,42,.12);
+}
+
+.hero-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
 .hero .kicker{
   color:var(--signal-dark);
-  font-size:.95rem;
+  font-size:1rem;
+  font-weight:700;
+  letter-spacing:.14em;
   margin-bottom:10px;
 }
 
 .hero-name{
   font-family:"Source Serif 4","Georgia",serif;
-  font-size:1.8rem;
+  font-size:2.6rem;
   font-weight:600;
   color:var(--signal-dark);
-  letter-spacing:.06em;
+  letter-spacing:.05em;
   margin-bottom:16px;
 }
     
@@ -1099,12 +1122,16 @@
 
 <div class="hero">
 
+  <div class="hero-photo">
+    <img src="premanand.jpeg" alt="Premanand S.">
+  </div>
+
   <div class="hero-name">
     PREMANAND S.
   </div>
 
   <div class="kicker">
-    Reading the signal. Understanding the pattern. Teaching the machine.
+    SINCE 2011
   </div>
 
   <h1>
@@ -1204,7 +1231,14 @@
   <div class="section-head">
     <h2>Research</h2>
     <div class="sub">
-      A few things in motion right now — more to follow as they take shape.
+      A PhD isn't just another degree stacked after UG and PG — it's meant
+      to make you capable of thinking about something genuinely novel:
+      finding real research gaps and exploring them with independence,
+      rather than being told what to work on. That's really where my
+      individual research life began. My move from Electronics into
+      Computational Intelligence, and later into teaching, kept opening up
+      new things to explore, one at a time. Here's where that exploration
+      stands right now.
     </div>
   </div>
 
