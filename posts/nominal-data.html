@@ -1,1 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nominal Data — Premanand S.</title>
+
+  <style>
+
+    :root{
+      --ink:#16232A;
+      --paper:#EEF2F1;
+      --paper-alt:#E3E9E7;
+      --line:#C6D1CD;
+      --signal:#2E8C7F;
+      --signal-dark:#1F6459;
+      --muted:#5B6B68;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:"Inter",system-ui,-apple-system,
+        BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      line-height:1.7;
+    }
+
+    h1,h2,h3{
+      font-family:"Source Serif 4","Georgia",serif;
+      font-weight:600;
+      letter-spacing:-0.01em;
+    }
+
+    a{
+      color:var(--signal-dark);
+      text-decoration:none;
+    }
+
+    a:hover{
+      text-decoration:underline;
+    }
+
+    .wrap{
+      max-width:760px;
+      margin:0 auto;
+      padding:0 24px;
+    }
+
+    header{
+      border-bottom:1px solid var(--line);
+    }
+
+    nav.wrap{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 24px;
+    }
+
+    nav .name{
+      font-family:"Source Serif 4","Georgia",serif;
+      font-weight:600;
+    }
+
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:22px;
+      margin:0;
+      padding:0;
+      font-size:.92rem;
+    }
+
+    nav a{
+      color:var(--ink);
+    }
+
+    .post-head{
+      padding:48px 0 28px;
+    }
+
+    .post-date{
+      color:var(--muted);
+      font-size:.82rem;
+      margin-bottom:8px;
+    }
+
+    .post-head h1{
+      font-size:2rem;
+      line-height:1.35;
+      margin:0 0 18px;
+    }
+
+    .post-content{
+      padding-bottom:50px;
+    }
+
+    .post-content h2{
+      font-size:1.35rem;
+      margin-top:36px;
+      margin-bottom:12px;
+    }
+
+    .post-content h3{
+      font-size:1.15rem;
+      margin-top:28px;
+    }
+
+    .post-content p{
+      margin:0 0 18px;
+    }
+
+    .post-content ul{
+      margin-bottom:22px;
+    }
+
+    .post-content li{
+      margin-bottom:6px;
+    }
+
+    .post-content blockquote{
+      margin:22px 0;
+      padding:12px 20px;
+      border-left:3px solid var(--signal);
+      background:var(--paper-alt);
+      color:var(--ink);
+    }
+
+    .post-content strong{
+      font-weight:700;
+    }
+
+    .post-content hr{
+      border:0;
+      border-top:1px solid var(--line);
+      margin:36px 0;
+    }
+
+    .post-content table{
+      width:100%;
+      border-collapse:collapse;
+      margin:24px 0;
+      font-size:.92rem;
+    }
+
+    .post-content th,
+    .post-content td{
+      border:1px solid var(--line);
+      padding:10px 12px;
+      text-align:left;
+    }
+
+    .post-content th{
+      background:var(--paper-alt);
+      font-weight:600;
+    }
+
+    .remember{
+      margin-top:30px;
+      padding:22px 24px;
+      background:var(--paper-alt);
+      border-left:3px solid var(--signal);
+      border-radius:4px;
+    }
+
+    .back{
+      padding:0 0 50px;
+      font-size:.9rem;
+    }
+
+    footer{
+      padding:30px 0 60px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.85rem;
+    }
+
+    @media(max-width:640px){
+
+      nav.wrap{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px 18px;
+      }
+
+      .post-head{
+        padding-top:35px;
+      }
+
+      .post-head h1{
+        font-size:1.7rem;
+      }
+
+      .post-content table{
+        font-size:.84rem;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<header>
+
+  <nav class="wrap">
+
+    <div class="name">
+      Premanand S.
+    </div>
+
+    <ul>
+      <li><a href="../index.html#research">Research</a></li>
+      <li><a href="../index.html#knowledge-sharing">Knowledge Sharing</a></li>
+      <li><a href="../index.html#teaching">Teaching</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+
+  </nav>
+
+</header>
+
+
+<main class="wrap">
+
+  <div class="post-head">
+
+    <div class="post-date">
+      28 September 2026
+    </div>
+
+    <h1>
+      Nominal Data — Definition, Examples, and When to Use
+    </h1>
+
+  </div>
+
+
+  <article class="post-content">
+
+    <p>
+      In the previous blog, we looked at
+      <strong>Qualitative vs Quantitative Data.</strong>
+    </p>
+
+    <p>
+      Now let's go one step deeper.
+    </p>
+
+    <p>
+      Imagine you have a list of students:
+    </p>
+
+    <ul>
+      <li>CSE</li>
+      <li>ECE</li>
+      <li>EEE</li>
+      <li>Mechanical</li>
+    </ul>
+
+    <p>
+      You can group the students based on their department.
+    </p>
+
+    <p>
+      But can you say that <strong>CSE is greater than ECE?</strong>
+    </p>
+
+    <p>
+      Of course not.
+    </p>
+
+    <p>
+      These are simply <strong>categories</strong>.
+    </p>
+
+    <p>
+      And this is where <strong>Nominal Data</strong> comes in.
+    </p>
+
+
+    <hr>
+
+
+    <h2>What Is Nominal Data?</h2>
+
+    <p>
+      Nominal data is data used to
+      <strong>name or label categories.</strong>
+    </p>
+
+    <p>
+      The word <em>nominal</em> comes from the idea of
+      <strong>names or labels.</strong>
+    </p>
+
+    <p>
+      The important point is:
+    </p>
+
+    <blockquote>
+      <strong>
+        Nominal data has categories, but those categories do not have
+        a meaningful order or ranking.
+      </strong>
+    </blockquote>
+
+    <p>
+      For example:
+    </p>
+
+    <h3>Blood Group</h3>
+
+    <p>
+      A+, A−, B+, B−, AB+, AB−, O+, O−
+    </p>
+
+    <p>
+      O+ is not "greater" than A+.
+      They are simply different categories.
+    </p>
+
+
+    <h2>Some Everyday Examples</h2>
+
+    <p>
+      Think about the information we encounter every day:
+    </p>
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Example</th>
+          <th>Nominal Categories</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>Department</td>
+          <td>CSE, ECE, EEE, ME</td>
+        </tr>
+
+        <tr>
+          <td>Blood Group</td>
+          <td>A+, B+, AB+, O+</td>
+        </tr>
+
+        <tr>
+          <td>Eye Colour</td>
+          <td>Brown, Blue, Green</td>
+        </tr>
+
+        <tr>
+          <td>Country</td>
+          <td>India, Japan, USA</td>
+        </tr>
+
+        <tr>
+          <td>Type of Device</td>
+          <td>Laptop, Tablet, Mobile</td>
+        </tr>
+
+        <tr>
+          <td>Favourite Programming Language</td>
+          <td>C, Python, Java</td>
+        </tr>
+
+        <tr>
+          <td>Payment Method</td>
+          <td>Cash, Card, UPI</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <p>
+      In each case, the values are <strong>labels.</strong>
+    </p>
+
+    <p>
+      There is no natural "higher" or "lower" category.
+    </p>
+
+
+    <h2>What About Numbers?</h2>
+
+    <p>
+      Here is something interesting.
+    </p>
+
+    <p>
+      Nominal data can sometimes <strong>look like numbers.</strong>
+    </p>
+
+    <p>
+      Suppose a college gives students these department codes:
+    </p>
+
+    <p>
+      <strong>1 → CSE</strong><br>
+      <strong>2 → ECE</strong><br>
+      <strong>3 → EEE</strong>
+    </p>
+
+    <p>
+      Are the students with department code 3 somehow
+      "greater" than those with department code 1?
+    </p>
+
+    <p>
+      No.
+    </p>
+
+    <p>
+      The numbers are simply <strong>labels.</strong>
+    </p>
+
+    <p>
+      So don't look at the format alone.
+    </p>
+
+    <blockquote>
+      <strong>
+        Does the number represent a quantity, or is it just a label?
+      </strong>
+    </blockquote>
+
+
+    <h2>When Do We Use Nominal Data?</h2>
+
+    <p>
+      We use nominal data when we want to:
+    </p>
+
+    <p>
+      <strong>Identify → Categorize → Group → Count</strong>
+    </p>
+
+    <p>
+      For example, a college might want to know:
+    </p>
+
+    <blockquote>
+      How many students are from each department?
+    </blockquote>
+
+    <p>
+      A hospital might want to know:
+    </p>
+
+    <blockquote>
+      How many patients belong to each blood group?
+    </blockquote>
+
+    <p>
+      An online store might ask:
+    </p>
+
+    <blockquote>
+      Which payment method do customers use most often?
+    </blockquote>
+
+    <p>
+      In each case, we are working with <strong>categories.</strong>
+    </p>
+
+
+    <h2>One Simple Rule</h2>
+
+    <p>
+      If you can say:
+    </p>
+
+    <blockquote>
+      <strong>
+        "These are different types, but one is not greater than another."
+      </strong>
+    </blockquote>
+
+    <p>
+      You are probably looking at <strong>Nominal Data.</strong>
+    </p>
+
+    <h3>Think: Nominal = Name</h3>
+
+    <p>
+      It tells us <strong>what category something belongs to.</strong>
+    </p>
+
+    <p>
+      It doesn't tell us <strong>how much.</strong>
+    </p>
+
+    <p>
+      It doesn't tell us <strong>which is higher or lower.</strong>
+    </p>
+
+    <p>
+      It simply gives us a label.
+    </p>
+
+
+    <h2>Why Does This Matter in Data Science?</h2>
+
+    <p>
+      Because before analysing a dataset, we need to understand
+      what each column actually represents.
+    </p>
+
+    <p>
+      Consider:
+    </p>
+
+    <p>
+      <strong>Age → 21, 22, 23</strong>
+    </p>
+
+    <p>
+      That's quantitative data.
+    </p>
+
+    <p>
+      But:
+    </p>
+
+    <p>
+      <strong>Department → CSE, ECE, EEE</strong>
+    </p>
+
+    <p>
+      That's categorical data.
+    </p>
+
+    <p>
+      Treating categories as if they were numerical measurements
+      can lead to incorrect analysis.
+    </p>
+
+    <p>
+      So before asking:
+    </p>
+
+    <blockquote>
+      <strong>
+        "What can I calculate from this data?"
+      </strong>
+    </blockquote>
+
+    <p>
+      ask:
+    </p>
+
+    <blockquote>
+      <strong>
+        "What does this data actually represent?"
+      </strong>
+    </blockquote>
+
+    <p>
+      That small question can prevent a big mistake.
+    </p>
+
+
+    <div class="remember">
+
+      <h2>Remember</h2>
+
+      <p>
+        <strong>Nominal Data = Names / Labels</strong>
+      </p>
+
+      <p>
+        No meaningful order.<br>
+        No ranking.<br>
+        Just categories.
+      </p>
+
+      <p>
+        <strong>CSE ≠ ECE</strong>
+      </p>
+
+      <p>
+        Not because one is greater or smaller,
+        but simply because <strong>they are different categories.</strong>
+      </p>
+
+      <p>
+        And that's the idea behind nominal data.
+      </p>
+
+    </div>
+
+  </article>
+
+
+  <div class="back">
+    <a href="../blog.html">← Back to blog</a>
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 Premanand S.
+</footer>
+
+</body>
+
+</html>
