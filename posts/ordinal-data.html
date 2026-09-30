@@ -1,1 +1,667 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ordinal Data — Premanand S.</title>
+
+<style>
+
+:root{
+  --ink:#16232A;
+  --paper:#EEF2F1;
+  --paper-alt:#E3E9E7;
+  --line:#C6D1CD;
+  --signal:#2E8C7F;
+  --signal-dark:#1F6459;
+  --muted:#5B6B68;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  line-height:1.7;
+}
+
+h1,h2,h3{
+  font-family:"Source Serif 4","Georgia",serif;
+  font-weight:600;
+  letter-spacing:-0.01em;
+}
+
+a{
+  color:var(--signal-dark);
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+.wrap{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header{
+  border-bottom:1px solid var(--line);
+}
+
+nav.wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 24px;
+}
+
+nav .name{
+  font-family:"Source Serif 4",serif;
+  font-weight:600;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:22px;
+  margin:0;
+  padding:0;
+  font-size:.92rem;
+}
+
+nav a{
+  color:var(--ink);
+}
+
+
+/* =========================
+   ARTICLE
+   ========================= */
+
+.article{
+  padding:60px 0 80px;
+}
+
+.article-date{
+  font-size:.82rem;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+
+.article h1{
+  font-size:2.5rem;
+  line-height:1.2;
+  margin:0 0 10px;
+}
+
+.article-subtitle{
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.25rem;
+  color:var(--muted);
+  margin-bottom:40px;
+}
+
+.article h2{
+  font-size:1.45rem;
+  margin-top:42px;
+  margin-bottom:12px;
+}
+
+.article h3{
+  font-size:1.2rem;
+  margin-top:28px;
+}
+
+.article p{
+  margin:0 0 18px;
+  color:#263633;
+}
+
+.article ul{
+  margin:10px 0 24px;
+  padding-left:24px;
+}
+
+.article li{
+  margin-bottom:7px;
+}
+
+.article blockquote{
+  margin:25px 0;
+  padding:15px 20px;
+  border-left:3px solid var(--signal);
+  background:var(--paper-alt);
+  color:var(--signal-dark);
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.05rem;
+}
+
+.highlight{
+  background:var(--paper-alt);
+  border-left:3px solid var(--signal);
+  padding:18px 20px;
+  margin:25px 0;
+}
+
+.center-text{
+  text-align:center;
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.15rem;
+  margin:28px 0;
+}
+
+.divider{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:40px 0;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer{
+  padding:30px 0 60px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media(max-width:640px){
+
+  nav.wrap{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+  }
+
+  .article{
+    padding:40px 0 60px;
+  }
+
+  .article h1{
+    font-size:2rem;
+  }
+
+  .article-subtitle{
+    font-size:1.1rem;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<nav class="wrap">
+
+  <div class="name">Premanand S.</div>
+
+  <ul>
+
+    <li><a href="../index.html#research">Research</a></li>
+
+    <li><a href="../index.html#knowledge-sharing">
+      Knowledge Sharing
+    </a></li>
+
+    <li><a href="../index.html#teaching">
+      Teaching
+    </a></li>
+
+    <li><a href="../index.html#about">
+      About
+    </a></li>
+
+    <li><a href="../blog.html">
+      Blog
+    </a></li>
+
+    <li><a href="../index.html#contact">
+      Contact
+    </a></li>
+
+  </ul>
+
+</nav>
+
+</header>
+
+
+<main class="wrap article">
+
+
+<div class="article-date">
+30 September 2026
+</div>
+
+
+<h1>
+Ordinal Data
+</h1>
+
+
+<div class="article-subtitle">
+Definition, Examples, and Difference from Nominal
+</div>
+
+
+<p>
+In the previous blog, we looked at <strong>Nominal Data</strong> —
+data used to name or label categories.
+</p>
+
+<p>
+Now let's make one small but important change.
+</p>
+
+<p>
+What if those categories <strong>have an order?</strong>
+</p>
+
+<p>
+Imagine a customer rates a service:
+</p>
+
+<div class="center-text">
+Poor → Average → Good → Excellent
+</div>
+
+<p>
+There is a clear order here.
+</p>
+
+<p>
+Excellent is above Good.
+</p>
+
+<p>
+Good is above Average.
+</p>
+
+<p>
+Average is above Poor.
+</p>
+
+<p>
+But can we say that the difference between
+<strong>Good and Excellent</strong> is exactly the same as the
+difference between <strong>Average and Good</strong>?
+</p>
+
+<p>
+Not necessarily.
+</p>
+
+<p>
+And that is the interesting idea behind
+<strong>Ordinal Data</strong>.
+</p>
+
+
+<hr class="divider">
+
+
+<h2>What Is Ordinal Data?</h2>
+
+<p>
+Ordinal data is categorical data where the values have a
+<strong>meaningful order or ranking.</strong>
+</p>
+
+<blockquote>
+Category + Order = Ordinal Data
+</blockquote>
+
+<p>
+Some everyday examples:
+</p>
+
+<ul>
+
+<li>Satisfaction → Poor, Average, Good, Excellent</li>
+
+<li>Competition → 1st, 2nd, 3rd</li>
+
+<li>Education level → School, Undergraduate, Postgraduate</li>
+
+<li>Agreement → Strongly Disagree → Disagree → Neutral → Agree → Strongly Agree</li>
+
+<li>T-shirt size → Small, Medium, Large, XL</li>
+
+<li>Spiciness → Mild, Medium, Hot, Very Hot</li>
+
+</ul>
+
+<p>
+In all these examples, we can say that one category comes
+<strong>before or after</strong> another.
+</p>
+
+
+<h2>Nominal vs Ordinal</h2>
+
+<p>
+This is where students often get confused.
+</p>
+
+
+<h3>Nominal Data</h3>
+
+<p>
+Consider:
+</p>
+
+<div class="highlight">
+
+<strong>Department:</strong><br><br>
+
+CSE &nbsp; | &nbsp; ECE &nbsp; | &nbsp; EEE &nbsp; | &nbsp; Mechanical
+
+</div>
+
+<p>
+There is no meaningful ranking.
+</p>
+
+<p>
+CSE is not "higher" than ECE.
+</p>
+
+<p>
+So:
+</p>
+
+<div class="center-text">
+<strong>Nominal → Category, No Order</strong>
+</div>
+
+
+<h3>Ordinal Data</h3>
+
+<p>
+Now consider:
+</p>
+
+<div class="highlight">
+
+<strong>Performance:</strong><br><br>
+
+Poor → Average → Good → Excellent
+
+</div>
+
+<p>
+Here, there is a meaningful ranking.
+</p>
+
+<p>
+So:
+</p>
+
+<div class="center-text">
+<strong>Ordinal → Category + Order</strong>
+</div>
+
+<p>
+That's the easiest way to remember the difference.
+</p>
+
+
+<h2>What About Numbers?</h2>
+
+<p>
+Ordinal data can also use numbers.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="center-text">
+<strong>1st → 2nd → 3rd</strong>
+</div>
+
+<p>
+These numbers tell us the <strong>position or rank.</strong>
+</p>
+
+<p>
+But be careful.
+</p>
+
+<p>
+If one student finishes 1st and another finishes 2nd,
+we know the first student ranked higher.
+</p>
+
+<p>
+We don't automatically know <strong>how much better</strong>
+the first student was.
+</p>
+
+<p>
+That's an important distinction.
+</p>
+
+
+<h2>A Simple Example</h2>
+
+<p>
+Imagine a feedback form:
+</p>
+
+<blockquote>
+How satisfied are you with the course?
+</blockquote>
+
+<p>
+You provide four options:
+</p>
+
+<div class="center-text">
+1 — Poor<br>
+2 — Average<br>
+3 — Good<br>
+4 — Excellent
+</div>
+
+<p>
+The numbers make it easy to store and analyse the responses.
+</p>
+
+<p>
+But the numbers are representing
+<strong>ordered categories.</strong>
+</p>
+
+<p>
+The jump from 1 to 2 doesn't necessarily represent the same
+amount of satisfaction as the jump from 3 to 4.
+</p>
+
+<p>
+So the numbers indicate <strong>rank</strong>, not necessarily
+a precise measurement.
+</p>
+
+
+<h2>When Do We Use Ordinal Data?</h2>
+
+<p>
+Ordinal data is useful when we want to:
+</p>
+
+<div class="center-text">
+<strong>Rank → Order → Compare</strong>
+</div>
+
+<p>
+For example:
+</p>
+
+<ul>
+
+<li>Ranking students in a competition</li>
+
+<li>Measuring satisfaction</li>
+
+<li>Recording levels of agreement</li>
+
+<li>Classifying severity</li>
+
+<li>Recording performance levels</li>
+
+<li>Representing product ratings</li>
+
+</ul>
+
+<p>
+Whenever the <strong>order matters</strong>, but the exact
+difference between categories isn't necessarily measurable,
+ordinal data can be appropriate.
+</p>
+
+
+<h2>One Simple Rule</h2>
+
+<p>
+Ask yourself two questions:
+</p>
+
+<div class="highlight">
+
+<strong>1. Are these categories?</strong><br><br>
+
+<strong>2. Do the categories have a meaningful order?</strong>
+
+</div>
+
+<p>
+If the answer is:
+</p>
+
+<div class="center-text">
+
+<strong>Yes + No → Nominal</strong>
+<br><br>
+<strong>Yes + Yes → Ordinal</strong>
+
+</div>
+
+
+<h3>Remember:</h3>
+
+<div class="center-text">
+
+<strong>Nominal = Name</strong>
+<br><br>
+<strong>Ordinal = Order</strong>
+
+</div>
+
+<p>
+That's it.
+</p>
+
+<p>
+A small difference in the name...
+</p>
+
+<p>
+but a very important difference when we start analysing data.
+</p>
+
+
+<hr class="divider">
+
+
+<h2>From Nominal to Ordinal</h2>
+
+<p>
+So far, our journey looks like this:
+</p>
+
+<div class="center-text">
+
+<strong>Qualitative Data</strong>
+
+<br><br>
+↓
+
+<br><br>
+
+<strong>Nominal → Categories without order</strong>
+
+<br><br>
+
+<strong>Ordinal → Categories with order</strong>
+
+</div>
+
+<p>
+And this is just the beginning.
+</p>
+
+<p>
+Once we understand what kind of data we have, we can start
+asking a much more interesting question:
+</p>
+
+<blockquote>
+What can we actually do with it?
+</blockquote>
+
+
+<div class="highlight">
+
+<strong>Data thinking begins with understanding the data.</strong>
+
+</div>
+
+
+</main>
+
+
+<footer>
+
+© 2026 Premanand S.
+
+</footer>
+
+
+</body>
+
+</html>
