@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Interval Data — Premanand S.</title>
+
+<style>
+
+:root{
+  --ink:#16232A;
+  --paper:#EEF2F1;
+  --paper-alt:#E3E9E7;
+  --line:#C6D1CD;
+  --signal:#2E8C7F;
+  --signal-dark:#1F6459;
+  --muted:#5B6B68;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  line-height:1.7;
+}
+
+h1,h2,h3{
+  font-family:"Source Serif 4","Georgia",serif;
+  font-weight:600;
+  letter-spacing:-0.01em;
+}
+
+a{
+  color:var(--signal-dark);
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+.wrap{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header{
+  border-bottom:1px solid var(--line);
+}
+
+nav.wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 24px;
+}
+
+nav .name{
+  font-family:"Source Serif 4",serif;
+  font-weight:600;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:22px;
+  margin:0;
+  padding:0;
+  font-size:.92rem;
+}
+
+nav a{
+  color:var(--ink);
+}
+
+
+/* =========================
+   ARTICLE
+   ========================= */
+
+.article{
+  padding:60px 0 80px;
+}
+
+.article-date{
+  font-size:.82rem;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+
+.article h1{
+  font-size:2.5rem;
+  line-height:1.2;
+  margin:0 0 10px;
+}
+
+.article-subtitle{
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.25rem;
+  color:var(--muted);
+  margin-bottom:40px;
+}
+
+.article h2{
+  font-size:1.45rem;
+  margin-top:42px;
+  margin-bottom:12px;
+}
+
+.article h3{
+  font-size:1.2rem;
+  margin-top:28px;
+}
+
+.article p{
+  margin:0 0 18px;
+  color:#263633;
+}
+
+.article ul{
+  margin:10px 0 24px;
+  padding-left:24px;
+}
+
+.article li{
+  margin-bottom:7px;
+}
+
+.article blockquote{
+  margin:25px 0;
+  padding:15px 20px;
+  border-left:3px solid var(--signal);
+  background:var(--paper-alt);
+  color:var(--signal-dark);
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.05rem;
+}
+
+.highlight{
+  background:var(--paper-alt);
+  border-left:3px solid var(--signal);
+  padding:18px 20px;
+  margin:25px 0;
+}
+
+.center-text{
+  text-align:center;
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.15rem;
+  margin:28px 0;
+}
+
+.data-flow{
+  text-align:center;
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.15rem;
+  line-height:2;
+  margin:30px 0;
+}
+
+.divider{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:40px 0;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer{
+  padding:30px 0 60px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media(max-width:640px){
+
+  nav.wrap{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+  }
+
+  .article{
+    padding:40px 0 60px;
+  }
+
+  .article h1{
+    font-size:2rem;
+  }
+
+  .article-subtitle{
+    font-size:1.1rem;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<nav class="wrap">
+
+  <div class="name">Premanand S.</div>
+
+  <ul>
+
+    <li>
+      <a href="../index.html#research">Research</a>
+    </li>
+
+    <li>
+      <a href="../index.html#knowledge-sharing">
+        Knowledge Sharing
+      </a>
+    </li>
+
+    <li>
+      <a href="../index.html#teaching">
+        Teaching
+      </a>
+    </li>
+
+    <li>
+      <a href="../index.html#about">
+        About
+      </a>
+    </li>
+
+    <li>
+      <a href="../blog.html">
+        Blog
+      </a>
+    </li>
+
+    <li>
+      <a href="../index.html#contact">
+        Contact
+      </a>
+    </li>
+
+  </ul>
+
+</nav>
+
+</header>
+
+
+<main class="wrap article">
+
+
+<div class="article-date">
+2 October 2026
+</div>
+
+
+<h1>
+Interval Data
+</h1>
+
+
+<div class="article-subtitle">
+Understanding Equal Differences — But No True Zero
+</div>
+
+
+<p>
+So far, we have explored:
+</p>
+
+<div class="highlight">
+
+<strong>Nominal Data</strong> → Categories without order
+
+<br><br>
+
+<strong>Ordinal Data</strong> → Categories with order
+
+</div>
+
+<p>
+Now let's take one more step.
+</p>
+
+<p>
+What if the values have an <strong>order</strong>, and the
+<strong>difference between values is meaningful and consistent?</strong>
+</p>
+
+<p>
+That brings us to <strong>Interval Data</strong>.
+</p>
+
+
+<hr class="divider">
+
+
+<h2>What Is Interval Data?</h2>
+
+<p>
+Interval data is numerical data where:
+</p>
+
+<ul>
+
+<li>Values have a meaningful <strong>order</strong></li>
+
+<li>The <strong>difference between values is meaningful</strong></li>
+
+<li>The intervals between values are <strong>equal</strong></li>
+
+<li>But there is <strong>no true zero</strong></li>
+
+</ul>
+
+<p>
+That last point is the interesting one.
+</p>
+
+<p>
+Let's see why.
+</p>
+
+
+<h2>Temperature Is a Simple Example</h2>
+
+<p>
+Consider temperature in Celsius:
+</p>
+
+<div class="center-text">
+<strong>10°C → 20°C → 30°C → 40°C</strong>
+</div>
+
+<p>
+The difference between:
+</p>
+
+<div class="highlight">
+
+10°C and 20°C = <strong>10°C</strong>
+
+<br><br>
+
+20°C and 30°C = <strong>10°C</strong>
+
+<br><br>
+
+30°C and 40°C = <strong>10°C</strong>
+
+</div>
+
+<p>
+The intervals are equal.
+</p>
+
+<p>
+So we can meaningfully say:
+</p>
+
+<blockquote>
+<strong>30°C is 10°C warmer than 20°C.</strong>
+</blockquote>
+
+<p>
+But there is something we cannot say:
+</p>
+
+<blockquote>
+<strong>40°C is twice as hot as 20°C.</strong> ❌
+</blockquote>
+
+<p>
+Why?
+</p>
+
+<p>
+Because <strong>0°C does not mean "no temperature."</strong>
+</p>
+
+<p>
+Zero is simply a point on the Celsius scale.
+</p>
+
+<p>
+That's what makes temperature in Celsius an example of
+<strong>Interval Data</strong>.
+</p>
+
+
+<h2>The Important Idea: No True Zero</h2>
+
+<p>
+This is probably the easiest way to remember interval data.
+</p>
+
+<p>
+Imagine a scale where:
+</p>
+
+<blockquote>
+<strong>0 does not mean "nothing exists."</strong>
+</blockquote>
+
+<p>
+That is a clue that you may be dealing with interval data.
+</p>
+
+<p>
+For Celsius:
+</p>
+
+<div class="center-text">
+
+<strong>0°C ≠ No temperature</strong>
+
+</div>
+
+<p>
+There is still thermal energy at 0°C.
+</p>
+
+<p>
+The zero is simply a reference point on the scale.
+</p>
+
+
+<h2>Some Examples</h2>
+
+<p>
+Common examples that are often treated as interval data include:
+</p>
+
+<ul>
+
+<li>Temperature in Celsius</li>
+
+<li>Temperature in Fahrenheit</li>
+
+<li>Calendar years</li>
+
+<li>IQ scores</li>
+
+</ul>
+
+<p>
+Consider calendar years:
+</p>
+
+<div class="center-text">
+
+<strong>2000 → 2010 → 2020</strong>
+
+</div>
+
+<p>
+The difference between 2000 and 2010 is
+<strong>10 years</strong>.
+</p>
+
+<p>
+The difference between 2010 and 2020 is also
+<strong>10 years</strong>.
+</p>
+
+<p>
+But the year <strong>0</strong> does not represent
+"no time."
+</p>
+
+<p>
+So calendar years demonstrate the idea of an interval scale.
+</p>
+
+
+<h2>Interval vs Ordinal</h2>
+
+<p>
+This is an important difference.
+</p>
+
+
+<h3>Ordinal Data</h3>
+
+<div class="highlight">
+
+<strong>Poor → Average → Good → Excellent</strong>
+
+</div>
+
+<p>
+We know the order.
+</p>
+
+<p>
+But we cannot assume the difference between categories is equal.
+</p>
+
+
+<h3>Interval Data</h3>
+
+<div class="highlight">
+
+<strong>10°C → 20°C → 30°C → 40°C</strong>
+
+</div>
+
+<p>
+We know the order.
+</p>
+
+<p>
+And the difference between consecutive values is meaningful
+and equal.
+</p>
+
+<div class="center-text">
+
+<strong>Ordinal = Order</strong>
+
+<br><br>
+
+<strong>Interval = Order + Equal Intervals</strong>
+
+</div>
+
+
+<h2>What Can We Do With Interval Data?</h2>
+
+<p>
+Because the differences are meaningful, we can perform many
+mathematical and statistical operations.
+</p>
+
+<p>
+For example, we can calculate:
+</p>
+
+<div class="center-text">
+
+<strong>Difference</strong>
+
+<br>
+
+40°C − 20°C = <strong>20°C</strong>
+
+</div>
+
+<p>
+We can also calculate measures such as the
+<strong>mean</strong>.
+</p>
+
+<p>
+But we should be careful with statements involving ratios.
+</p>
+
+<p>
+For example:
+</p>
+
+<blockquote>
+<strong>40°C is twice as hot as 20°C.</strong> ❌
+</blockquote>
+
+<p>
+That doesn't make sense on the Celsius scale.
+</p>
+
+<p>
+If we want to make ratio-based statements about temperature,
+we need a scale with a <strong>true zero</strong>, such as Kelvin.
+</p>
+
+
+<h2>One Simple Way to Remember</h2>
+
+<p>
+Think about the four questions:
+</p>
+
+<div class="highlight">
+
+<strong>1. Are there categories?</strong>
+
+<br><br>
+
+<strong>2. Is there an order?</strong>
+
+<br><br>
+
+<strong>3. Are the intervals equal?</strong>
+
+<br><br>
+
+<strong>4. Is there a true zero?</strong>
+
+</div>
+
+<p>
+For Interval Data:
+</p>
+
+<div class="center-text">
+
+<strong>Order → Yes ✅</strong>
+
+<br><br>
+
+<strong>Equal intervals → Yes ✅</strong>
+
+<br><br>
+
+<strong>True zero → No ❌</strong>
+
+</div>
+
+<p>
+That's the key.
+</p>
+
+
+<hr class="divider">
+
+
+<h2>The Bigger Picture</h2>
+
+<p>
+Our journey is becoming clearer:
+</p>
+
+<div class="data-flow">
+
+<strong>Nominal</strong>
+
+<br>
+
+↓
+<br>
+
+Categories
+
+<br><br>
+
+<strong>Ordinal</strong>
+
+<br>
+
+↓
+
+<br>
+
+Categories + Order
+
+<br><br>
+
+<strong>Interval</strong>
+
+<br>
+
+↓
+
+<br>
+
+Order + Equal Intervals
+
+</div>
+
+<p>
+And there is still one more important level waiting for us:
+</p>
+
+<div class="center-text">
+
+<strong>Ratio Data</strong>
+
+</div>
+
+<p>
+Where we finally get something Interval Data doesn't have:
+</p>
+
+<blockquote>
+<strong>A true zero.</strong>
+</blockquote>
+
+<p>
+And that small difference changes what we can say about the
+numbers.
+</p>
+
+
+<h2>Remember</h2>
+
+<div class="highlight">
+
+<strong>Interval Data = Equal Differences, No True Zero</strong>
+
+</div>
+
+<p>
+So the next time you see a temperature of
+<strong>20°C</strong>, don't just look at the number.
+</p>
+
+<p>
+Ask:
+</p>
+
+<blockquote>
+<strong>“What does zero actually mean here?”</strong>
+</blockquote>
+
+<p>
+Sometimes, understanding the meaning of zero is more important
+than understanding the number itself.
+</p>
+
+
+</main>
+
+
+<footer>
+
+© 2026 Premanand S.
+
+</footer>
+
+
+</body>
+
+</html>
