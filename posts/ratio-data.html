@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ratio Data — Premanand S.</title>
+
+<style>
+
+:root{
+  --ink:#16232A;
+  --paper:#EEF2F1;
+  --paper-alt:#E3E9E7;
+  --line:#C6D1CD;
+  --signal:#2E8C7F;
+  --signal-dark:#1F6459;
+  --muted:#5B6B68;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  line-height:1.7;
+}
+
+h1,h2,h3{
+  font-family:"Source Serif 4","Georgia",serif;
+  font-weight:600;
+  letter-spacing:-0.01em;
+}
+
+a{
+  color:var(--signal-dark);
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+.wrap{
+  max-width:760px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header{
+  border-bottom:1px solid var(--line);
+}
+
+nav.wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 24px;
+}
+
+nav .name{
+  font-family:"Source Serif 4",serif;
+  font-weight:600;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:22px;
+  margin:0;
+  padding:0;
+  font-size:.92rem;
+}
+
+nav a{
+  color:var(--ink);
+}
+
+
+/* =========================
+   ARTICLE
+   ========================= */
+
+.article{
+  padding:60px 0 80px;
+}
+
+.article-date{
+  font-size:.82rem;
+  color:var(--muted);
+  margin-bottom:12px;
+}
+
+.article h1{
+  font-size:2.5rem;
+  line-height:1.2;
+  margin:0 0 10px;
+}
+
+.article-subtitle{
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.25rem;
+  color:var(--muted);
+  margin-bottom:40px;
+}
+
+.article h2{
+  font-size:1.45rem;
+  margin-top:42px;
+  margin-bottom:12px;
+}
+
+.article h3{
+  font-size:1.2rem;
+  margin-top:28px;
+}
+
+.article p{
+  margin:0 0 18px;
+  color:#263633;
+}
+
+.article ul{
+  margin:10px 0 24px;
+  padding-left:24px;
+}
+
+.article li{
+  margin-bottom:7px;
+}
+
+.article blockquote{
+  margin:25px 0;
+  padding:15px 20px;
+  border-left:3px solid var(--signal);
+  background:var(--paper-alt);
+  color:var(--signal-dark);
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.05rem;
+}
+
+.highlight{
+  background:var(--paper-alt);
+  border-left:3px solid var(--signal);
+  padding:18px 20px;
+  margin:25px 0;
+}
+
+.center-text{
+  text-align:center;
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.15rem;
+  margin:28px 0;
+}
+
+.data-flow{
+  text-align:center;
+  font-family:"Source Serif 4","Georgia",serif;
+  font-size:1.1rem;
+  line-height:2;
+  margin:30px 0;
+}
+
+.divider{
+  border:0;
+  border-top:1px solid var(--line);
+  margin:40px 0;
+}
+
+
+/* =========================
+   TABLE
+   ========================= */
+
+.article table{
+  width:100%;
+  border-collapse:collapse;
+  margin:25px 0;
+  font-size:.92rem;
+}
+
+.article th,
+.article td{
+  border:1px solid var(--line);
+  padding:11px 14px;
+  text-align:left;
+}
+
+.article th{
+  background:var(--paper-alt);
+  font-weight:600;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer{
+  padding:30px 0 60px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media(max-width:640px){
+
+  nav.wrap{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+  }
+
+  .article{
+    padding:40px 0 60px;
+  }
+
+  .article h1{
+    font-size:2rem;
+  }
+
+  .article-subtitle{
+    font-size:1.1rem;
+  }
+
+  .article table{
+    font-size:.82rem;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<nav class="wrap">
+
+  <div class="name">
+    Premanand S.
+  </div>
+
+  <ul>
+
+    <li>
+      <a href="../index.html#research">
+        Research
+      </a>
+    </li>
+
+    <li>
+      <a href="../index.html#knowledge-sharing">
+        Knowledge Sharing
+      </a>
+    </li>
+
+    <li>
+      <a href="../index.html#teaching">
+        Teaching
+      </a>
+    </li>
+
+    <li>
+      <a href="../index.html#about">
+        About
+      </a>
+    </li>
+
+    <li>
+      <a href="../blog.html">
+        Blog
+      </a>
+    </li>
+
+    <li>
+      <a href="../index.html#contact">
+        Contact
+      </a>
+    </li>
+
+  </ul>
+
+</nav>
+
+</header>
+
+
+<main class="wrap article">
+
+
+<div class="article-date">
+8 October 2026
+</div>
+
+
+<h1>
+Ratio Data
+</h1>
+
+
+<div class="article-subtitle">
+When Zero Really Means Zero
+</div>
+
+
+<p>
+So far, we have travelled through three types of data:
+</p>
+
+<div class="highlight">
+
+<strong>Nominal</strong> → Categories
+
+<br><br>
+
+<strong>Ordinal</strong> → Categories + Order
+
+<br><br>
+
+<strong>Interval</strong> → Order + Equal Intervals
+
+</div>
+
+<p>
+Now we reach the final level:
+</p>
+
+<h2>
+Ratio Data
+</h2>
+
+<p>
+What makes Ratio Data special?
+</p>
+
+<div class="center-text">
+<strong>It has a true zero.</strong>
+</div>
+
+<p>
+And that small difference makes a big difference.
+</p>
+
+
+<hr class="divider">
+
+
+<h2>
+What Is Ratio Data?
+</h2>
+
+<p>
+Ratio data is numerical data where:
+</p>
+
+<ul>
+
+<li>
+Values have a meaningful <strong>order</strong>
+</li>
+
+<li>
+Differences between values are <strong>meaningful</strong>
+</li>
+
+<li>
+Intervals are <strong>equal</strong>
+</li>
+
+<li>
+There is a <strong>true zero</strong>
+</li>
+
+</ul>
+
+<p>
+That last point is the key.
+</p>
+
+<p>
+A true zero means:
+</p>
+
+<blockquote>
+<strong>
+Zero represents the complete absence of the quantity being measured.
+</strong>
+</blockquote>
+
+
+<h2>
+Let's Take Weight
+</h2>
+
+<p>
+Imagine three objects:
+</p>
+
+<div class="center-text">
+<strong>
+0 kg → 10 kg → 20 kg → 30 kg
+</strong>
+</div>
+
+<p>
+Here:
+</p>
+
+<ul>
+
+<li>
+20 kg is 10 kg more than 10 kg.
+</li>
+
+<li>
+30 kg is 10 kg more than 20 kg.
+</li>
+
+<li>
+And importantly, <strong>0 kg means no weight.</strong>
+</li>
+
+</ul>
+
+<p>
+Because there is a true zero, we can also make meaningful
+ratio statements.
+</p>
+
+<div class="highlight">
+
+<strong>20 kg is twice 10 kg. ✅</strong>
+
+<br><br>
+
+<strong>30 kg is three times 10 kg. ✅</strong>
+
+</div>
+
+<p>
+That's what makes weight a classic example of
+<strong>Ratio Data</strong>.
+</p>
+
+
+<h2>
+Everyday Examples
+</h2>
+
+<p>
+Ratio data is everywhere:
+</p>
+
+<table>
+
+<thead>
+
+<tr>
+  <th>Measurement</th>
+  <th>Example</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+  <td>Height</td>
+  <td>180 cm</td>
+</tr>
+
+<tr>
+  <td>Weight</td>
+  <td>70 kg</td>
+</tr>
+
+<tr>
+  <td>Age</td>
+  <td>25 years</td>
+</tr>
+
+<tr>
+  <td>Distance</td>
+  <td>10 km</td>
+</tr>
+
+<tr>
+  <td>Time duration</td>
+  <td>30 minutes</td>
+</tr>
+
+<tr>
+  <td>Income</td>
+  <td>₹50,000</td>
+</tr>
+
+<tr>
+  <td>Number of students</td>
+  <td>60</td>
+</tr>
+
+<tr>
+  <td>Heart rate</td>
+  <td>72 BPM</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<p>
+In these cases, zero has a meaningful interpretation.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="highlight">
+
+<strong>0 km</strong> = no distance
+
+<br><br>
+
+<strong>0 students</strong> = no students
+
+<br><br>
+
+<strong>0 minutes</strong> = no duration
+
+</div>
+
+
+<h2>
+Ratio vs Interval
+</h2>
+
+<p>
+This is where many students get confused.
+</p>
+
+
+<h3>
+Temperature in Celsius
+</h3>
+
+<div class="center-text">
+
+<strong>
+20°C → 30°C → 40°C
+</strong>
+
+</div>
+
+<p>
+The differences are meaningful.
+</p>
+
+<p>
+But:
+</p>
+
+<blockquote>
+<strong>
+40°C is NOT twice 20°C. ❌
+</strong>
+</blockquote>
+
+<p>
+Why?
+</p>
+
+<p>
+Because <strong>0°C is not a true zero.</strong>
+</p>
+
+
+<h3>
+Now Consider Weight
+</h3>
+
+<div class="center-text">
+
+<strong>
+10 kg → 20 kg → 30 kg
+</strong>
+
+</div>
+
+<p>
+Here:
+</p>
+
+<blockquote>
+<strong>
+20 kg is twice 10 kg. ✅
+</strong>
+</blockquote>
+
+<p>
+Because <strong>0 kg represents no weight.</strong>
+</p>
+
+<div class="center-text">
+
+<strong>
+Interval = Equal intervals, but no true zero</strong>
+
+<br><br>
+
+<strong>
+Ratio = Equal intervals + true zero
+</strong>
+
+</div>
+
+
+<h2>
+A Simple Trick
+</h2>
+
+<p>
+When you are unsure whether data is Interval or Ratio,
+ask:
+</p>
+
+<div class="highlight">
+
+<h3>
+“Does zero mean none?”
+</h3>
+
+<p>
+If <strong>No</strong> → It may be <strong>Interval Data.</strong>
+</p>
+
+<p>
+If <strong>Yes</strong> → It may be <strong>Ratio Data.</strong>
+</p>
+
+</div>
+
+<p>
+For example:
+</p>
+
+<ul>
+
+<li>
+<strong>0°C</strong> → Not “no temperature” ❌
+</li>
+
+<li>
+<strong>0 kg</strong> → No weight ✅
+</li>
+
+<li>
+<strong>0 km</strong> → No distance ✅
+</li>
+
+<li>
+<strong>₹0</strong> → No money amount ✅
+</li>
+
+</ul>
+
+
+<h2>
+Why Does Ratio Data Matter?
+</h2>
+
+<p>
+Because Ratio Data allows us to perform meaningful
+mathematical comparisons.
+</p>
+
+<p>
+We can talk about:
+</p>
+
+<div class="highlight">
+
+<strong>Differences</strong>
+
+<br><br>
+
+80 kg − 60 kg = <strong>20 kg</strong>
+
+<br><br>
+
+<strong>Ratios</strong>
+
+<br><br>
+
+80 kg is twice 40 kg.
+
+<br><br>
+
+<strong>Averages</strong>
+
+<br><br>
+
+Average height = 168 cm
+
+</div>
+
+<p>
+And many other statistical operations.
+</p>
+
+<p>
+The presence of a true zero gives us much more freedom
+in how we interpret the numbers.
+</p>
+
+
+<h2>
+The Complete Journey
+</h2>
+
+<p>
+Now our four levels are clear:
+</p>
+
+<table>
+
+<thead>
+
+<tr>
+  <th>Type</th>
+  <th>Key Idea</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+  <td><strong>Nominal</strong></td>
+  <td>Categories</td>
+</tr>
+
+<tr>
+  <td><strong>Ordinal</strong></td>
+  <td>Categories + Order</td>
+</tr>
+
+<tr>
+  <td><strong>Interval</strong></td>
+  <td>Order + Equal Intervals</td>
+</tr>
+
+<tr>
+  <td><strong>Ratio</strong></td>
+  <td>Order + Equal Intervals + True Zero</td>
+</tr>
+
+</tbody>
+
+</table>
+
+
+<div class="data-flow">
+
+<strong>Nominal → Name</strong>
+
+<br>
+
+<strong>Ordinal → Order</strong>
+
+<br>
+
+<strong>Interval → Equal Intervals</strong>
+
+<br>
+
+<strong>Ratio → Real Zero</strong>
+
+</div>
+
+
+<hr class="divider">
+
+
+<h2>
+One Final Thought
+</h2>
+
+<p>
+A number by itself doesn't tell us everything.
+</p>
+
+<div class="center-text">
+
+<strong>20</strong>
+
+</div>
+
+<p>
+could mean:
+</p>
+
+<div class="highlight">
+
+20°C<br><br>
+
+20 kg<br><br>
+
+20 students<br><br>
+
+20th rank<br><br>
+
+₹20
+
+</div>
+
+<p>
+The number is the same.
+</p>
+
+<p>
+But the <strong>meaning of the number is different.</strong>
+</p>
+
+<p>
+That's why understanding the type of data matters.
+</p>
+
+<p>
+Before calculating.
+</p>
+
+<p>
+Before visualizing.
+</p>
+
+<p>
+Before building a model.
+</p>
+
+<p>
+Before asking AI to analyse it.
+</p>
+
+<blockquote>
+<strong>
+First understand what the data actually means.
+</strong>
+</blockquote>
+
+<p>
+And that is the real lesson behind the
+<strong>four levels of measurement.</strong>
+</p>
+
+
+<div class="highlight">
+
+<strong>
+Nominal → Ordinal → Interval → Ratio
+</strong>
+
+<br><br>
+
+From simply naming categories...
+
+to understanding order...
+
+to measuring equal differences...
+
+and finally, to meaningful ratios built on a true zero.
+
+</div>
+
+
+</main>
+
+
+<footer>
+
+© 2026 Premanand S.
+
+</footer>
+
+
+</body>
+
+</html>
