@@ -1,0 +1,101 @@
+name: Notify Telegram on New YouTube Video
+
+on:
+  schedule:
+    # Runs every 2 hours automatically
+    - cron: '0 */2 * * *'
+  # Allows manual 1-click trigger in GitHub Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-youtube:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Check YouTube Feed & Notify Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID || 'UCg_xUlFxobdOk09XUwGVnUQ' }}
+        run: |
+          python3 - << 'EOF'
+          import os
+          import xml.etree.ElementTree as ET
+          import urllib.request
+          import urllib.parse
+          import json
+
+          bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+          chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+          channel_id = os.environ.get("YOUTUBE_CHANNEL_ID", "UCg_xUlFxobdOk09XUwGVnUQ")
+
+          if not bot_token or not chat_id:
+              print("Missing Telegram secrets (TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID).")
+              exit(1)
+
+          feed_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
+          req = urllib.request.Request(feed_url, headers={"User-Agent": "Mozilla/5.0"})
+
+          try:
+              with urllib.request.urlopen(req) as response:
+                  xml_data = response.read()
+          except Exception as e:
+              print(f"Error fetching YouTube feed: {e}")
+              exit(0)
+
+          root = ET.fromstring(xml_data)
+          ns = {
+              "atom": "http://www.w3.org/2005/Atom",
+              "yt": "http://www.youtube.com/xml/schemas/2015"
+          }
+
+          entries = root.findall("atom:entry", ns)
+          if not entries:
+              print("No videos found in feed.")
+              exit(0)
+
+          latest = entries[0]
+          video_id = latest.find("yt:videoId", ns).text
+          title = latest.find("atom:title", ns).text
+          video_url = f"https://youtu.be/{video_id}"
+
+          last_video_file = ".last_youtube_video_id"
+          last_video_id = ""
+          if os.path.exists(last_video_file):
+              with open(last_video_file, "r") as f:
+                  last_video_id = f.read().strip()
+
+          if video_id == last_video_id:
+              print(f"Video {video_id} has already been notified.")
+              exit(0)
+
+          message_text = f"🎥 New YouTube Video: {title}\n{video_url}"
+          tg_url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+          payload = urllib.parse.urlencode({
+              "chat_id": chat_id,
+              "text": message_text
+          }).encode("utf-8")
+
+          tg_req = urllib.request.Request(tg_url, data=payload, method="POST")
+          try:
+              with urllib.request.urlopen(tg_req) as tg_resp:
+                  print(f"Successfully sent notification for video: {video_id}")
+                  with open(last_video_file, "w") as f:
+                      f.write(video_id)
+          except Exception as e:
+              print(f"Failed to send Telegram message: {e}")
+          EOF
+
+      - name: Save last video ID
+        run: |
+          if [ -f .last_youtube_video_id ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add .last_youtube_video_id
+            git diff-index --quiet HEAD || (git commit -m "chore: update last posted YouTube video ID" && git push origin main) || true
+          fi
