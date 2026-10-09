@@ -1,0 +1,528 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Structured Data — Premanand S.</title>
+
+<style>
+:root{
+  --ink:#16232A;
+  --paper:#EEF2F1;
+  --paper-alt:#E3E9E7;
+  --line:#C6D1CD;
+  --signal:#2E8C7F;
+  --signal-dark:#1F6459;
+  --muted:#5B6B68;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  line-height:1.7;
+}
+
+h1,h2,h3{
+  font-family:"Source Serif 4","Georgia",serif;
+  font-weight:600;
+  line-height:1.3;
+}
+
+a{
+  color:var(--signal-dark);
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+.wrap{
+  max-width:820px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+header{
+  border-bottom:1px solid var(--line);
+}
+
+nav.wrap{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:16px 24px;
+}
+
+nav .name{
+  font-family:"Source Serif 4","Georgia",serif;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  margin:0;
+  padding:0;
+  font-size:.86rem;
+}
+
+nav a{
+  color:var(--ink);
+}
+
+.article{
+  padding-top:48px;
+  padding-bottom:60px;
+}
+
+.article-date{
+  color:var(--muted);
+  font-size:.84rem;
+  margin-bottom:12px;
+}
+
+.article h1{
+  font-size:2.5rem;
+  margin:0 0 8px;
+  letter-spacing:-.02em;
+}
+
+.article-subtitle{
+  color:var(--muted);
+  font-size:1.12rem;
+  margin:0 0 30px;
+}
+
+.article h2{
+  font-size:1.5rem;
+  margin:38px 0 12px;
+}
+
+.article h3{
+  font-size:1.12rem;
+  margin:24px 0 8px;
+}
+
+.article p{
+  margin:0 0 18px;
+}
+
+.article ul,
+.article ol{
+  padding-left:24px;
+  margin:0 0 22px;
+}
+
+.article li{
+  margin-bottom:8px;
+}
+
+.highlight{
+  background:var(--paper-alt);
+  border-left:4px solid var(--signal);
+  padding:18px 22px;
+  margin:24px 0;
+  border-radius:3px;
+}
+
+.highlight p:last-child{
+  margin-bottom:0;
+}
+
+.data-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:22px 0;
+  font-size:.92rem;
+}
+
+.data-table th,
+.data-table td{
+  border:1px solid var(--line);
+  padding:11px 13px;
+  text-align:left;
+}
+
+.data-table th{
+  background:var(--paper-alt);
+  font-weight:600;
+}
+
+.data-table td{
+  background:rgba(255,255,255,.25);
+}
+
+.code-block{
+  background:#16232A;
+  color:#EEF2F1;
+  padding:20px;
+  border-radius:5px;
+  overflow-x:auto;
+  margin:20px 0;
+  font-size:.9rem;
+  line-height:1.65;
+}
+
+.code-block pre{
+  margin:0;
+  font-family:Consolas,"Courier New",monospace;
+  white-space:pre;
+}
+
+.data-flow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:24px 0;
+}
+
+.data-flow span{
+  background:var(--paper-alt);
+  border:1px solid var(--line);
+  border-radius:4px;
+  padding:10px 14px;
+  font-size:.9rem;
+  font-weight:600;
+}
+
+.data-flow .arrow{
+  background:none;
+  border:none;
+  padding:0;
+  color:var(--signal-dark);
+  font-size:1.2rem;
+}
+
+.article-footer{
+  border-top:1px solid var(--line);
+  margin-top:44px;
+  padding-top:24px;
+}
+
+.back-link{
+  font-weight:600;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:28px 0 40px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.85rem;
+}
+
+@media(max-width:640px){
+  nav.wrap{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  nav ul{
+    gap:10px 14px;
+  }
+
+  .article{
+    padding-top:34px;
+  }
+
+  .article h1{
+    font-size:2rem;
+  }
+
+  .article h2{
+    font-size:1.3rem;
+  }
+
+  .data-table{
+    font-size:.8rem;
+  }
+
+  .data-table th,
+  .data-table td{
+    padding:8px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="name">Premanand S.</div>
+
+    <ul>
+      <li><a href="../index.html#research">Research</a></li>
+      <li><a href="../index.html#knowledge-sharing">Knowledge Sharing</a></li>
+      <li><a href="../index.html#teaching">Teaching</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap article">
+
+  <div class="article-date">9 October 2026</div>
+
+  <h1>Structured Data</h1>
+
+  <p class="article-subtitle">
+    What It Is and Where It Lives
+  </p>
+
+  <p>
+    Imagine a college has 5,000 students.
+  </p>
+
+  <p>
+    Each student has a name, register number, department, age, and marks.
+  </p>
+
+  <p>Where would you store all this information?</p>
+
+  <ul>
+    <li>In a spreadsheet?</li>
+    <li>In a database?</li>
+    <li>Or in a simple table?</li>
+  </ul>
+
+  <p>
+    Now imagine trying to find every student from the CSE department
+    who scored above 80 marks.
+  </p>
+
+  <p>
+    If the data is organized properly, finding the answer becomes
+    much easier.
+  </p>
+
+  <div class="highlight">
+    <p><strong>Welcome to the world of Structured Data.</strong></p>
+  </div>
+
+  <h2>What Is Structured Data?</h2>
+
+  <p>
+    Structured data is data organized according to a predefined format,
+    usually in rows and columns.
+  </p>
+
+  <p>Think of it like a well-organized spreadsheet.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Register No.</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Marks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>101</td><td>Arun</td><td>CSE</td><td>85</td></tr>
+      <tr><td>102</td><td>Priya</td><td>ECE</td><td>92</td></tr>
+      <tr><td>103</td><td>Kavin</td><td>CSE</td><td>78</td></tr>
+      <tr><td>104</td><td>Meena</td><td>IT</td><td>88</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    Each <strong>row</strong> represents a student.
+  </p>
+
+  <p>
+    Each <strong>column</strong> represents a specific attribute.
+  </p>
+
+  <p>
+    Because the data follows a consistent structure, computers can
+    easily search, filter, sort, and analyse it.
+  </p>
+
+  <p>Simple, right?</p>
+
+  <h2>Where Does Structured Data Live?</h2>
+
+  <p>
+    Structured data is commonly stored and managed using three kinds
+    of tools or platforms.
+  </p>
+
+  <h3>1. Spreadsheets</h3>
+
+  <p>
+    Tools such as Microsoft Excel and Google Sheets organize data
+    into rows and columns.
+  </p>
+
+  <p>
+    <strong>Useful for:</strong> Student marks, attendance, budgets,
+    and small datasets.
+  </p>
+
+  <h3>2. Relational Databases</h3>
+
+  <p>
+    Systems such as MySQL, PostgreSQL, and Microsoft SQL Server
+    store structured data in tables.
+  </p>
+
+  <p>
+    <strong>Useful for:</strong> College management systems, banking
+    applications, e-commerce platforms, and hospital records.
+  </p>
+
+  <h3>3. Data Warehouses</h3>
+
+  <p>
+    Platforms such as Google BigQuery, Snowflake, and Amazon Redshift
+    help organizations store and analyse large amounts of data
+    collected from multiple sources.
+  </p>
+
+  <p>
+    <strong>Useful for:</strong> Business reports, sales analysis,
+    and large-scale analytics.
+  </p>
+
+  <div class="highlight">
+    <p>
+      Different tools, same fundamental idea:
+      <strong>organize data so it can be accessed and used efficiently.</strong>
+    </p>
+  </div>
+
+  <h2>Why Is Structured Data So Useful?</h2>
+
+  <p>
+    Imagine asking these questions about the student table:
+  </p>
+
+  <ul>
+    <li>How many students belong to CSE?</li>
+    <li>Who scored the highest marks?</li>
+    <li>What is the average score?</li>
+    <li>Which students scored above 80?</li>
+  </ul>
+
+  <p>
+    Because the data is organized, we can answer these questions
+    using filters, formulas, or SQL queries.
+  </p>
+
+  <p>For example, consider this SQL query:</p>
+
+  <div class="code-block"><pre>SELECT Name, Marks
+FROM Students
+WHERE Marks &gt; 80;</pre></div>
+
+  <p>
+    This query retrieves the names and marks of students who scored
+    above 80.
+  </p>
+
+  <p>
+    The computer doesn't need to guess what each value means.
+    The table structure tells it where to look.
+  </p>
+
+  <h2>Is All Data Structured?</h2>
+
+  <p>Not at all!</p>
+
+  <p>Consider these three examples:</p>
+
+  <h3>Structured Data</h3>
+
+  <p>
+    A table containing student names, departments, and marks.
+    The data follows a predefined structure.
+  </p>
+
+  <h3>Semi-structured Data</h3>
+
+  <p>
+    A JSON document containing student information, with named fields
+    but a flexible structure.
+  </p>
+
+  <div class="code-block"><pre>{
+  "registerNo": 101,
+  "name": "Arun",
+  "department": "CSE",
+  "marks": 85
+}</pre></div>
+
+  <h3>Unstructured Data</h3>
+
+  <p>
+    A photograph, an audio recording, or a video whose main content
+    does not follow a predefined tabular structure.
+  </p>
+
+  <p>
+    Each type has its own uses, storage approaches, and challenges.
+    We'll explore the other two in upcoming blogs.
+  </p>
+
+  <h2>One Simple Thought</h2>
+
+  <p>
+    Structured data is not necessarily more valuable than other
+    types of data.
+  </p>
+
+  <p>
+    A medical image may contain information that a table cannot
+    capture. A voice recording may reveal patterns that numbers
+    alone cannot describe.
+  </p>
+
+  <p>
+    But when information fits into a well-defined structure,
+    it becomes easier to organize, query, and analyse.
+  </p>
+
+  <p>
+    And that is why structured data remains an important foundation
+    of databases, data analytics, and many AI applications.
+  </p>
+
+  <div class="highlight">
+    <p><strong>First, organize the data. Then ask better questions.</strong></p>
+    <p>
+      Because even the most powerful analysis begins with understanding
+      what you have.
+    </p>
+  </div>
+
+  <div class="article-footer">
+    <a class="back-link" href="../blog.html">← Back to blog</a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Premanand S.</div>
+</footer>
+
+</body>
+</html>
+```
