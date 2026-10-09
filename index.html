@@ -2191,6 +2191,46 @@
 <footer>
   © 2026 Premanand S. Built with GitHub Pages.
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var blogList = document.querySelector(".blog-post-list");
+  if (!blogList) return;
 
+  fetch("blog.html")
+    .then(function (res) { return res.text(); })
+    .then(function (html) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, "text/html");
+      var posts = doc.querySelectorAll(".post");
+      if (!posts || posts.length === 0) return;
+
+      var output = "";
+      var count = Math.min(2, posts.length);
+      for (var i = 0; i < count; i++) {
+        var p = posts[i];
+        var dateEl = p.querySelector(".date");
+        var date = dateEl ? dateEl.textContent.trim() : "";
+        var titleEl = p.querySelector("h2 a") || p.querySelector("h2") || p.querySelector("h3");
+        var title = titleEl ? titleEl.textContent.trim() : "";
+        var linkEl = p.querySelector("a[href]");
+        var link = linkEl ? linkEl.getAttribute("href") : "blog.html";
+        var descEl = p.querySelector("p");
+        var desc = descEl ? descEl.textContent.trim() : "";
+
+        output += '<a class="blog-post" href="' + link + '">' +
+          '<div class="bp-date">' + date + '</div>' +
+          '<div class="bp-title">' + title + '</div>' +
+          '<p class="bp-desc">' + desc + '</p>' +
+          '</a>';
+      }
+      if (output) {
+        blogList.innerHTML = output;
+      }
+    })
+    .catch(function (err) {
+      console.log("Could not auto-load latest posts:", err);
+    });
+});
+</script>
 </body>
 </html>
