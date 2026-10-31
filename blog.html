@@ -3,45 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Waveforms & Weights — Premanand S.</title>
+<title>Waveforms &amp; Weights — Dr. Premanand S.</title>
+<meta name="description" content="Research notes, Machine Learning/Deep Learning experiments, Python &amp; C tutorials, and lessons from the classroom by Dr. Premanand S.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Waveforms &amp; Weights — Dr. Premanand S.">
+<meta property="og:description" content="Research notes, ML/DL experiments, Python &amp; C tutorials, and pedagogy notes.">
+<meta property="og:image" content="https://anandprems.github.io/premanand.jpeg">
+<meta property="og:url" content="https://anandprems.github.io/blog.html">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Waveforms &amp; Weights — Dr. Premanand S.">
+<meta name="twitter:description" content="Research notes, ML/DL experiments, Python &amp; C tutorials, and pedagogy notes.">
+<meta name="twitter:image" content="https://anandprems.github.io/premanand.jpeg">
+
+<link rel="icon" href="premanand.jpeg" type="image/jpeg">
+<meta name="theme-color" content="#1F6459">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --ink:#16232A; --paper:#EEF2F1; --paper-alt:#E3E9E7;
+    --ink:#141f24; --paper:#EEF2F1; --paper-alt:#E3E9E7;
     --line:#C6D1CD; --signal:#2E8C7F; --signal-dark:#1F6459; --muted:#5B6B68;
   }
   *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
   body{margin:0;background:var(--paper);color:var(--ink);
-    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.6;}
-  h1,h2,h3{font-family:"Source Serif 4","Georgia",serif;font-weight:600;margin:0 0 .4em;letter-spacing:-0.01em;}
-  a{color:var(--signal-dark);text-decoration:none;}
+    font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.65;}
+  h1,h2,h3{font-family:"Source Serif 4","Georgia",serif;font-weight:600;margin:0 0 .4em;letter-spacing:-0.015em;}
+  a{color:var(--signal-dark);text-decoration:none;transition:color .2s ease;}
   a:hover{text-decoration:underline;}
-  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
-  header{border-bottom:1px solid var(--line);}
-  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;}
-  nav .name{font-family:"Source Serif 4",serif;font-weight:600;}
-  nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;font-size:.92rem;}
-  nav a{color:var(--ink);}
-  .page-head{padding:48px 0 30px;}
-  .page-head h1{font-size:2rem;}
-  .page-head p{color:var(--muted);}
-  .post{padding:24px 0;border-top:1px solid var(--line);}
-  .post:first-of-type{border-top:none;}
-  .post .date{font-size:.82rem;color:var(--muted);margin-bottom:6px;}
-  .post h2{font-size:1.25rem;margin-bottom:6px;}
-  .post p{margin:0 0 10px;color:#33413E;}
-  footer{padding:30px 0 60px;text-align:center;color:var(--muted);font-size:.85rem;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 24px;}
+  header{position:sticky;top:0;z-index:100;background:rgba(238,242,241,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;}
+  .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+  .brand:hover{text-decoration:none;}
+  .brand-avatar{width:32px;height:32px;border-radius:50%;overflow:hidden;border:2px solid var(--signal);display:block;flex-shrink:0;}
+  .brand-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
+  .brand .name{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.05rem;}
+  .degree-chip{font-size:.68rem;font-weight:700;color:#fff;background:var(--signal-dark);padding:2px 7px;border-radius:12px;letter-spacing:.03em;}
+  nav ul{list-style:none;display:flex;align-items:center;gap:18px;margin:0;padding:0;font-size:.9rem;font-weight:500;}
+  nav a{color:var(--ink);padding:4px 8px;border-radius:4px;}
+  nav a:hover{color:var(--signal-dark);background:rgba(46,140,127,0.08);text-decoration:none;}
+  .page-head{padding:54px 0 32px;}
+  .page-head h1{font-size:2.3rem;margin-bottom:8px;}
+  .page-head p{color:var(--muted);font-size:1.05rem;line-height:1.6;margin:0;}
+  .post{padding:26px 24px;border:1px solid var(--line);border-radius:8px;background:#ffffff;margin-bottom:16px;box-shadow:0 2px 6px rgba(22,35,42,.03);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;}
+  .post:hover{transform:translateY(-2px);border-color:var(--signal);box-shadow:0 8px 20px rgba(22,35,42,.07);}
+  .post .date{font-size:.78rem;font-weight:600;color:var(--signal-dark);margin-bottom:6px;display:inline-block;padding:2px 8px;background:rgba(46,140,127,.08);border-radius:4px;}
+  .post h2{font-size:1.25rem;margin:6px 0 8px;}
+  .post h2 a{color:var(--ink);}
+  .post h2 a:hover{color:var(--signal-dark);}
+  .post p{margin:0 0 12px;color:#33413E;font-size:.95rem;line-height:1.6;}
+  .post > a{font-weight:600;font-size:.88rem;}
+  footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);margin-top:40px;}
+  @media(max-width:640px){
+    nav.wrap{flex-direction:column;gap:10px;}
+    nav ul{flex-wrap:wrap;justify-content:center;gap:10px;font-size:.82rem;}
+    .page-head h1{font-size:1.85rem;}
+  }
 </style>
 </head>
 <body>
 
 <header>
   <nav class="wrap">
-    <div class="name">Premanand S.</div>
+    <a href="index.html" class="brand">
+      <span class="brand-avatar"><img src="premanand.jpeg" alt="Premanand S."></span>
+      <span class="name">Premanand S.</span>
+      <span class="degree-chip">Ph.D.</span>
+    </a>
     <ul>
+      <li><a href="index.html">Home</a></li>
       <li><a href="index.html#research">Research</a></li>
       <li><a href="index.html#teaching">Teaching</a></li>
       <li><a href="index.html#about">About</a></li>
-      <li><a href="blog.html">Blog</a></li>
+      <li><a href="blog.html" style="color:var(--signal-dark);font-weight:600;">Blog</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
   </nav>
@@ -197,7 +240,11 @@
 
 </div>
 
-<footer>© 2026 Premanand S.</footer>
+<footer>
+  <div class="wrap">
+    <p>© 2026 Dr. Premanand S. · Waveforms &amp; Weights · Hosted on GitHub Pages</p>
+  </div>
+</footer>
 
 </body>
 </html>
