@@ -28,45 +28,538 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
 
 <style>
-  :root{
-    --ink:#141f24; --paper:#EEF2F1; --paper-alt:#E3E9E7;
-    --line:#C6D1CD; --signal:#2E8C7F; --signal-dark:#1F6459; --muted:#5B6B68;
+  :root {
+    --ink: #141f24;
+    --paper: #EEF2F1;
+    --paper-alt: #E3E9E7;
+    --paper-card: #FFFFFF;
+    --line: #C6D1CD;
+    --line-light: rgba(198, 209, 205, 0.5);
+    --signal: #2E8C7F;
+    --signal-dark: #1F6459;
+    --signal-light: rgba(46, 140, 127, 0.1);
+    --signal-accent: #38b2a0;
+    --muted: #5B6B68;
   }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
-  body{margin:0;background:var(--paper);color:var(--ink);
-    font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.65;}
-  h1,h2,h3{font-family:"Source Serif 4","Georgia",serif;font-weight:600;margin:0 0 .4em;letter-spacing:-0.015em;}
-  a{color:var(--signal-dark);text-decoration:none;transition:color .2s ease;}
-  a:hover{text-decoration:underline;}
-  .wrap{max-width:780px;margin:0 auto;padding:0 24px;}
-  header{position:sticky;top:0;z-index:100;background:rgba(238,242,241,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-  nav.wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;}
-  .brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
-  .brand:hover{text-decoration:none;}
-  .brand-avatar{width:32px;height:32px;border-radius:50%;overflow:hidden;border:2px solid var(--signal);display:block;flex-shrink:0;}
-  .brand-avatar img{width:100%;height:100%;object-fit:cover;display:block;}
-  .brand .name{font-family:"Source Serif 4",serif;font-weight:700;font-size:1.05rem;}
-  .degree-chip{font-size:.68rem;font-weight:700;color:#fff;background:var(--signal-dark);padding:2px 7px;border-radius:12px;letter-spacing:.03em;}
-  nav ul{list-style:none;display:flex;align-items:center;gap:18px;margin:0;padding:0;font-size:.9rem;font-weight:500;}
-  nav a{color:var(--ink);padding:4px 8px;border-radius:4px;}
-  nav a:hover{color:var(--signal-dark);background:rgba(46,140,127,0.08);text-decoration:none;}
-  .page-head{padding:54px 0 32px;}
-  .page-head h1{font-size:2.3rem;margin-bottom:8px;}
-  .page-head p{color:var(--muted);font-size:1.05rem;line-height:1.6;margin:0;}
-  .post{padding:26px 24px;border:1px solid var(--line);border-radius:8px;background:#ffffff;margin-bottom:16px;box-shadow:0 2px 6px rgba(22,35,42,.03);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;}
-  .post:hover{transform:translateY(-2px);border-color:var(--signal);box-shadow:0 8px 20px rgba(22,35,42,.07);}
-  .post .date{font-size:.78rem;font-weight:600;color:var(--signal-dark);margin-bottom:6px;display:inline-block;padding:2px 8px;background:rgba(46,140,127,.08);border-radius:4px;}
-  .post h2{font-size:1.25rem;margin:6px 0 8px;}
-  .post h2 a{color:var(--ink);}
-  .post h2 a:hover{color:var(--signal-dark);}
-  .post p{margin:0 0 12px;color:#33413E;font-size:.95rem;line-height:1.6;}
-  .post > a{font-weight:600;font-size:.88rem;}
-  footer{padding:40px 0 60px;text-align:center;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line);margin-top:40px;}
-  @media(max-width:640px){
-    nav.wrap{flex-direction:column;gap:10px;}
-    nav ul{flex-wrap:wrap;justify-content:center;gap:10px;font-size:.82rem;}
-    .page-head h1{font-size:1.85rem;}
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Source Serif 4", "Georgia", serif;
+    font-weight: 600;
+    margin: 0 0 .4em;
+    letter-spacing: -0.015em;
+  }
+
+  a {
+    color: var(--signal-dark);
+    text-decoration: none;
+    transition: color .2s ease;
+  }
+  a:hover { text-decoration: underline; }
+
+  .wrap {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header & Navigation */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(238, 242, 241, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  nav.wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .brand:hover { text-decoration: none; }
+
+  .brand-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--signal);
+    display: block;
+    flex-shrink: 0;
+  }
+  .brand-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .brand .name { font-family: "Source Serif 4", serif; font-weight: 700; font-size: 1.05rem; }
+  .degree-chip {
+    font-size: .68rem;
+    font-weight: 700;
+    color: #fff;
+    background: var(--signal-dark);
+    padding: 2px 7px;
+    border-radius: 12px;
+    letter-spacing: .03em;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+    font-size: .9rem;
+    font-weight: 500;
+  }
+  nav a { color: var(--ink); padding: 4px 8px; border-radius: 4px; }
+  nav a:hover { color: var(--signal-dark); background: rgba(46, 140, 127, 0.08); text-decoration: none; }
+
+  .page-head {
+    padding: 50px 0 24px;
+  }
+  .page-head h1 { font-size: 2.4rem; margin-bottom: 8px; }
+  .page-head p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0; }
+
+  /* =========================================
+     SERIES HERO: Phase 1 — Foundations of Data
+     ========================================= */
+  .series-hero {
+    background: #ffffff;
+    border: 2px solid var(--signal);
+    border-radius: 14px;
+    padding: 28px 26px;
+    margin: 16px 0 36px;
+    box-shadow: 0 10px 28px rgba(46, 140, 127, 0.09);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .series-hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 220px;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(46, 140, 127, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .series-badge-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .series-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--signal-dark);
+    background: var(--signal-light);
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(46, 140, 127, 0.25);
+  }
+
+  .series-status {
+    font-size: 0.78rem;
+    color: var(--signal-dark);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .series-status::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    display: inline-block;
+  }
+
+  .series-hero h2 {
+    font-size: 1.85rem;
+    margin: 0 0 10px;
+    color: var(--ink);
+  }
+
+  .series-hero p {
+    color: #33413E;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin: 0 0 22px;
+  }
+
+  /* Interactive Circular Roadmap Track */
+  .roadmap-section {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+
+  .roadmap-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+
+  .roadmap-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--signal-dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .roadmap-hint {
+    font-size: 0.74rem;
+    color: var(--muted);
+  }
+
+  .round-options-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px 8px;
+  }
+
+  @media (min-width: 680px) {
+    .round-options-grid {
+      grid-template-columns: repeat(10, 1fr);
+      gap: 8px;
+    }
+  }
+
+  .round-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    group: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .round-btn:hover {
+    text-decoration: none;
+    transform: translateY(-4px);
+  }
+
+  .round-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--signal);
+    color: var(--signal-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 700;
+    font-size: 0.96rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: all 0.25s ease;
+  }
+
+  .round-btn:hover .round-circle,
+  .round-btn.active .round-circle {
+    background: var(--signal-dark);
+    color: #ffffff;
+    border-color: var(--signal-dark);
+    box-shadow: 0 6px 14px rgba(31, 100, 89, 0.35);
+  }
+
+  .round-sub {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--muted);
+    margin-top: 6px;
+    text-align: center;
+    line-height: 1.2;
+    transition: color 0.2s ease;
+  }
+
+  .round-btn:hover .round-sub {
+    color: var(--signal-dark);
+    font-weight: 700;
+  }
+
+  /* Interactive Live Preview Box */
+  .preview-box {
+    margin-top: 14px;
+    background: #ffffff;
+    border: 1px dashed var(--signal);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    min-height: 52px;
+  }
+
+  .preview-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .preview-chapter {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--signal-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .preview-title {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .preview-link-btn {
+    flex-shrink: 0;
+    background: var(--signal-dark);
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+  }
+
+  .preview-link-btn:hover {
+    background: var(--signal);
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  /* Category Filter Pills */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 24px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--signal);
+    color: var(--signal-dark);
+  }
+
+  .filter-btn.active {
+    background: var(--signal-dark);
+    border-color: var(--signal-dark);
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(31, 100, 89, 0.25);
+  }
+
+  /* Section Title Bar */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 36px 0 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--signal-light);
+  }
+
+  .section-divider h3 {
+    margin: 0;
+    font-size: 1.35rem;
+    color: var(--signal-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-count {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--signal);
+    background: var(--paper-alt);
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+
+  /* =========================================
+     POST CARDS & NUMBERED BADGES
+     ========================================= */
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .post {
+    padding: 24px 26px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 6px rgba(22, 35, 42, .03);
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    position: relative;
+  }
+
+  .post:hover {
+    transform: translateY(-2px);
+    border-color: var(--signal);
+    box-shadow: 0 8px 20px rgba(22, 35, 42, .07);
+  }
+
+  /* Chapter Card Layout (Circular Badge + Content) */
+  .post.chapter-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .chapter-badge-col {
+    flex-shrink: 0;
+  }
+
+  .chapter-round-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(46, 140, 127, 0.1), rgba(46, 140, 127, 0.22));
+    border: 2px solid var(--signal);
+    color: var(--signal-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    font-weight: 800;
+    font-family: "Inter", sans-serif;
+    box-shadow: 0 2px 8px rgba(46, 140, 127, 0.12);
+    transition: all 0.25s ease;
+  }
+
+  .post:hover .chapter-round-badge {
+    background: var(--signal-dark);
+    color: #ffffff;
+    border-color: var(--signal-dark);
+    transform: scale(1.05);
+  }
+
+  .chapter-content-col {
+    flex-grow: 1;
+  }
+
+  .post-meta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .post .date {
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--signal-dark);
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(46, 140, 127, .08);
+    border-radius: 4px;
+  }
+
+  .post-tag {
+    font-size: .74rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--paper-alt);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .post h2 {
+    font-size: 1.28rem;
+    margin: 4px 0 8px;
+    line-height: 1.35;
+  }
+  .post h2 a { color: var(--ink); }
+  .post h2 a:hover { color: var(--signal-dark); }
+
+  .post p {
+    margin: 0 0 12px;
+    color: #33413E;
+    font-size: .95rem;
+    line-height: 1.6;
+  }
+
+  .post > a, .post .read-link {
+    font-weight: 600;
+    font-size: .88rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  footer {
+    padding: 40px 0 60px;
+    text-align: center;
+    color: var(--muted);
+    font-size: .88rem;
+    border-top: 1px solid var(--line);
+    margin-top: 50px;
+  }
+
+  @media(max-width: 640px) {
+    nav.wrap { flex-direction: column; gap: 10px; }
+    nav ul { flex-wrap: wrap; justify-content: center; gap: 10px; font-size: .82rem; }
+    .page-head h1 { font-size: 1.95rem; }
+    .series-hero { padding: 20px 18px; }
+    .post.chapter-card { flex-direction: column; gap: 12px; }
+    .preview-box { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
@@ -91,202 +584,458 @@
 </header>
 
 <div class="wrap page-head">
-  <h1>Waveforms & Weights</h1>
-  <p>Research notes, Machine Learning/Deep Learning experiments, Python & C tutorials, and lessons from the classroom.</p>
+  <h1>Waveforms &amp; Weights</h1>
+  <p>Research notes, Machine Learning/Deep Learning experiments, Python &amp; C tutorials, and lessons from the classroom.</p>
 </div>
 
 <div class="wrap">
 
-  <!-- 11. Primary vs Secondary Data -->
-  <div class="post">
-    <div class="date">16 November 2026</div>
-    <h2>
-      <a href="posts/primary-vs-secondary-data.html">
-        Data Sources — Primary vs Secondary Data: How Origin Dictates AI Reliability
-      </a>
-    </h2>
+  <!-- =========================================
+       HERO: PHASE 1 — FOUNDATIONS OF DATA
+       ========================================= -->
+  <section class="series-hero" id="phase1">
+    <div class="series-badge-row">
+      <span class="series-tag">📘 Curated Curriculum Series</span>
+      <span class="series-status">Phase 1 Complete (10 of 10 Published)</span>
+    </div>
+
+    <h2>Phase 1 — Foundations of Data</h2>
     <p>
-      Data doesn’t just vary in shape — it varies in origin. Discover the critical difference between raw, first-hand primary clinical collections and curated secondary benchmark datasets, and why knowing your data origin is the ultimate defense against AI bias and model collapse.
+      Before analysing signals, engineering features, or training deep neural networks, every data scientist must understand the essence of data itself. This 10-chapter curriculum travels from core motivation and Stevens’ measurement scales to modern tabular, media, and flexible schemas, concluding with data provenance and AI reliability.
     </p>
-    <a href="posts/primary-vs-secondary-data.html">Read post →</a>
+
+    <!-- Round-shaped options track (1 through 10) -->
+    <div class="roadmap-section">
+      <div class="roadmap-title-row">
+        <span class="roadmap-title">
+          <span>🎯</span> Interactive Chapter Navigator
+        </span>
+        <span class="roadmap-hint">Click any circle to open that blog:</span>
+      </div>
+
+      <div class="round-options-grid" id="roundTrack">
+        <!-- 1 -->
+        <a href="posts/why-data.html" class="round-btn" data-chapter="1" data-title="Why Data? — Why Data Science and AI Became So Important" data-desc="How data, questions, learning, and human thinking connect to the rise of Data Science and AI.">
+          <span class="round-circle">1</span>
+          <span class="round-sub">Why Data?</span>
+        </a>
+
+        <!-- 2 -->
+        <a href="posts/types-of-data.html" class="round-btn" data-chapter="2" data-title="Types of Data — Qualitative vs Quantitative" data-desc="The foundational classification: numbers vs categories, and why knowing the difference prevents modelling mistakes.">
+          <span class="round-circle">2</span>
+          <span class="round-sub">Types</span>
+        </a>
+
+        <!-- 3 -->
+        <a href="posts/nominal-data.html" class="round-btn" data-chapter="3" data-title="Nominal Data — Definition, Examples, and When to Use" data-desc="Labels, categories without order, and why numerical codes in nominal data cannot be mathematically averaged.">
+          <span class="round-circle">3</span>
+          <span class="round-sub">Nominal</span>
+        </a>
+
+        <!-- 4 -->
+        <a href="posts/ordinal-data.html" class="round-btn" data-chapter="4" data-title="Ordinal Data — Definition, Examples, and Difference from Nominal" data-desc="When categories possess a natural rank and order, but differences between levels remain uneven.">
+          <span class="round-circle">4</span>
+          <span class="round-sub">Ordinal</span>
+        </a>
+
+        <!-- 5 -->
+        <a href="posts/interval-data.html" class="round-btn" data-chapter="5" data-title="Interval Data — Understanding Equal Differences, But No True Zero" data-desc="Equal differences between consecutive values, but where zero is merely an arbitrary reference point.">
+          <span class="round-circle">5</span>
+          <span class="round-sub">Interval</span>
+        </a>
+
+        <!-- 6 -->
+        <a href="posts/ratio-data.html" class="round-btn" data-chapter="6" data-title="Ratio Data — When Zero Really Means Zero" data-desc="The pinnacle of numerical measurement: true zero, absolute physical absence, and valid mathematical ratios.">
+          <span class="round-circle">6</span>
+          <span class="round-sub">Ratio</span>
+        </a>
+
+        <!-- 7 -->
+        <a href="posts/structured-data.html" class="round-btn" data-chapter="7" data-title="Structured Data — What It Is and Where It Lives" data-desc="The world of rows, columns, relational schemas, SQL, spreadsheets, and enterprise data warehouses.">
+          <span class="round-circle">7</span>
+          <span class="round-sub">Structured</span>
+        </a>
+
+        <!-- 8 -->
+        <a href="posts/unstructured-data.html" class="round-btn" data-chapter="8" data-title="Unstructured Data — What It Is and Real-World Examples" data-desc="The 80%+ iceberg of human data: medical ECG biosignals, images, video, audio, and how deep learning decodes them.">
+          <span class="round-circle">8</span>
+          <span class="round-sub">Unstructured</span>
+        </a>
+
+        <!-- 9 -->
+        <a href="posts/semi-structured-data.html" class="round-btn" data-chapter="9" data-title="Semi-Structured Data — JSON, XML and Where They’re Used" data-desc="The dynamic middle ground: flexible, self-describing schemas powering web APIs, document databases, and microservices.">
+          <span class="round-circle">9</span>
+          <span class="round-sub">Semi-Struct</span>
+        </a>
+
+        <!-- 10 -->
+        <a href="posts/primary-vs-secondary-data.html" class="round-btn" data-chapter="10" data-title="Data Sources — Primary vs Secondary Data: How Origin Dictates AI Reliability" data-desc="First-hand clinical acquisition vs benchmark repository reuse, and why data provenance dictates AI model collapse.">
+          <span class="round-circle">10</span>
+          <span class="round-sub">Provenance</span>
+        </a>
+      </div>
+
+      <!-- Live Interactive Preview Strip -->
+      <div class="preview-box" id="previewBox">
+        <div class="preview-info">
+          <span class="preview-chapter" id="previewChapter">Hover or click any round circle above</span>
+          <span class="preview-title" id="previewTitle">Explore the 10 sequential chapters of Phase 1</span>
+        </div>
+        <a href="posts/primary-vs-secondary-data.html" class="preview-link-btn" id="previewBtn">Latest Chapter →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Buttons -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-filter="all">All Posts (12)</button>
+    <button class="filter-btn" data-filter="phase1">Phase 1: Foundations of Data (10)</button>
+    <button class="filter-btn" data-filter="reflections">Classroom &amp; Essays (2)</button>
   </div>
 
-  <!-- 10. Semi-Structured Data -->
-  <div class="post">
-    <div class="date">12 November 2026</div>
-    <h2>
-      <a href="posts/semi-structured-data.html">
-        Semi-Structured Data — JSON, XML and Where They’re Used
-      </a>
-    </h2>
-    <p>
-      Not all data fits neatly into tables, nor is it completely unstructured. Discover how semi-structured formats like JSON and XML provide flexible schemas and power modern web APIs and applications.
-    </p>
-    <a href="posts/semi-structured-data.html">Read post →</a>
+  <!-- =========================================
+       POSTS CATALOG: PHASE 1 CHAPTERS
+       ========================================= -->
+  <div class="section-divider group-phase1">
+    <h3><span>📘</span> Phase 1 — Foundations of Data Chapters</h3>
+    <span class="section-count">10 Articles</span>
   </div>
 
-  <!-- 9. Unstructured Data -->
-  <div class="post">
-    <div class="date">11 November 2026</div>
-    <h2>
-      <a href="posts/unstructured-data.html">
-        Unstructured Data — What It Is and Real-World Examples
-      </a>
-    </h2>
-    <p>
-      Not all data lives in rows and columns. Some of the most valuable information in the world is hidden inside images, videos, emails, documents, and audio recordings. Discover how modern AI unlocks its true potential.
-    </p>
-    <a href="posts/unstructured-data.html">Read post →</a>
+  <div class="post-list">
+
+    <!-- 10. Primary vs Secondary Data -->
+    <div class="post chapter-card post-item group-phase1" id="post-10">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">10</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">16 November 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 10</span>
+          <span class="post-tag">Provenance &amp; AI</span>
+        </div>
+        <h2>
+          <a href="posts/primary-vs-secondary-data.html">
+            Data Sources — Primary vs Secondary Data: How Origin Dictates AI Reliability
+          </a>
+        </h2>
+        <p>
+          Data doesn’t just vary in shape — it varies in origin. Discover the critical difference between raw, first-hand clinical collections and curated secondary benchmark datasets (like PhysioNet), and why knowing your data origin is the ultimate defense against AI bias and model collapse.
+        </p>
+        <a href="posts/primary-vs-secondary-data.html" class="read-link">Read Chapter 10 →</a>
+      </div>
+    </div>
+
+    <!-- 9. Semi-Structured Data -->
+    <div class="post chapter-card post-item group-phase1" id="post-9">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">09</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">12 November 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 9</span>
+          <span class="post-tag">JSON / XML / APIs</span>
+        </div>
+        <h2>
+          <a href="posts/semi-structured-data.html">
+            Semi-Structured Data — JSON, XML and Where They’re Used
+          </a>
+        </h2>
+        <p>
+          Not all data fits neatly into tables, nor is it completely unstructured. Discover how semi-structured formats like JSON and XML provide flexible schemas and power modern web APIs, distributed microservices, and document databases.
+        </p>
+        <a href="posts/semi-structured-data.html" class="read-link">Read Chapter 09 →</a>
+      </div>
+    </div>
+
+    <!-- 8. Unstructured Data -->
+    <div class="post chapter-card post-item group-phase1" id="post-8">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">08</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">11 November 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 8</span>
+          <span class="post-tag">Images / Signals / Audio</span>
+        </div>
+        <h2>
+          <a href="posts/unstructured-data.html">
+            Unstructured Data — What It Is and Real-World Examples
+          </a>
+        </h2>
+        <p>
+          Not all data lives in rows and columns. Hidden inside medical ECG biosignals, images, audio, and video is over 80% of the world's information. Explore how feature representation, convolutional networks, and deep learning turn raw sensory chaos into structured intelligence.
+        </p>
+        <a href="posts/unstructured-data.html" class="read-link">Read Chapter 08 →</a>
+      </div>
+    </div>
+
+    <!-- 7. Structured Data -->
+    <div class="post chapter-card post-item group-phase1" id="post-7">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">07</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">9 October 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 7</span>
+          <span class="post-tag">Tabular &amp; SQL</span>
+        </div>
+        <h2>
+          <a href="posts/structured-data.html">
+            Structured Data — What It Is and Where It Lives
+          </a>
+        </h2>
+        <p>
+          From student spreadsheets to relational SQL databases and cloud data warehouses like BigQuery and Snowflake. Discover how predefined schemas, rows, and columns make structured data the bedrock of corporate business intelligence and analytics.
+        </p>
+        <a href="posts/structured-data.html" class="read-link">Read Chapter 07 →</a>
+      </div>
+    </div>
+
+    <!-- 6. Ratio Data -->
+    <div class="post chapter-card post-item group-phase1" id="post-6">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">06</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">8 October 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 6</span>
+          <span class="post-tag">Measurement Scales</span>
+        </div>
+        <h2>
+          <a href="posts/ratio-data.html">
+            Ratio Data — When Zero Really Means Zero
+          </a>
+        </h2>
+        <p>
+          The final and highest level of measurement. Discover what happens when numerical data possesses a true, absolute zero representing total absence, unlocking multiplication, division, and meaningful ratio statements.
+        </p>
+        <a href="posts/ratio-data.html" class="read-link">Read Chapter 06 →</a>
+      </div>
+    </div>
+
+    <!-- 5. Interval Data -->
+    <div class="post chapter-card post-item group-phase1" id="post-5">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">05</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">2 October 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 5</span>
+          <span class="post-tag">Measurement Scales</span>
+        </div>
+        <h2>
+          <a href="posts/interval-data.html">
+            Interval Data — Understanding Equal Differences, But No True Zero
+          </a>
+        </h2>
+        <p>
+          What happens when values have a definite order and equal, measurable differences, but zero is merely an arbitrary calibration point rather than absence? The fascinating mechanics of Celsius and calendar years.
+        </p>
+        <a href="posts/interval-data.html" class="read-link">Read Chapter 05 →</a>
+      </div>
+    </div>
+
+    <!-- 4. Ordinal Data -->
+    <div class="post chapter-card post-item group-phase1" id="post-4">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">04</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">30 September 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 4</span>
+          <span class="post-tag">Measurement Scales</span>
+        </div>
+        <h2>
+          <a href="posts/ordinal-data.html">
+            Ordinal Data — Definition, Examples, and Difference from Nominal
+          </a>
+        </h2>
+        <p>
+          Moving beyond flat labels: what happens when categories have a natural ranking? Explore feedback surveys, Likert scales, competition standings, and why mathematical averages can deceive on ordinal scales.
+        </p>
+        <a href="posts/ordinal-data.html" class="read-link">Read Chapter 04 →</a>
+      </div>
+    </div>
+
+    <!-- 3. Nominal Data -->
+    <div class="post chapter-card post-item group-phase1" id="post-3">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">03</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">28 September 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 3</span>
+          <span class="post-tag">Measurement Scales</span>
+        </div>
+        <h2>
+          <a href="posts/nominal-data.html">
+            Nominal Data — Definition, Examples, and When to Use
+          </a>
+        </h2>
+        <p>
+          The simplest level of data: categorical labels and qualitative tags without inherent ordering. Learn how one-hot encoding works and why assigning numbers to categories doesn't make them quantitative.
+        </p>
+        <a href="posts/nominal-data.html" class="read-link">Read Chapter 03 →</a>
+      </div>
+    </div>
+
+    <!-- 2. Types of Data -->
+    <div class="post chapter-card post-item group-phase1" id="post-2">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">02</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">24 September 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 2</span>
+          <span class="post-tag">Foundational Taxonomy</span>
+        </div>
+        <h2>
+          <a href="posts/types-of-data.html">
+            Types of Data — Qualitative vs Quantitative
+          </a>
+        </h2>
+        <p>
+          Before writing code, picking algorithms, or training models, we must understand the core distinction: numbers that quantify versus categories that describe. A guide to setting up proper analytical foundations.
+        </p>
+        <a href="posts/types-of-data.html" class="read-link">Read Chapter 02 →</a>
+      </div>
+    </div>
+
+    <!-- 1. Why Data? -->
+    <div class="post chapter-card post-item group-phase1" id="post-1">
+      <div class="chapter-badge-col">
+        <div class="chapter-round-badge">01</div>
+      </div>
+      <div class="chapter-content-col">
+        <div class="post-meta-row">
+          <span class="date">23 September 2026</span>
+          <span class="post-tag">Phase 1 · Chapter 1</span>
+          <span class="post-tag">Motivation &amp; Paradigms</span>
+        </div>
+        <h2>
+          <a href="posts/why-data.html">
+            Why Data? — Why Data Science and AI Became So Important
+          </a>
+        </h2>
+        <p>
+          Data is everywhere. But data alone is not knowledge. A philosophical look at how questions, iterative learning, and human curiosity transformed raw telemetry into the dominant paradigm of 21st-century Artificial Intelligence.
+        </p>
+        <a href="posts/why-data.html" class="read-link">Read Chapter 01 →</a>
+      </div>
+    </div>
+
+  </div><!-- /post-list (phase 1) -->
+
+  <!-- =========================================
+       SECTION 2: CLASSROOM & PEDAGOGY ESSAYS
+       ========================================= -->
+  <div class="section-divider group-reflections" style="margin-top:54px;">
+    <h3><span>🎓</span> Classroom Notes &amp; Academic Reflections</h3>
+    <span class="section-count">2 Essays</span>
   </div>
 
-  <!-- 8. Structured Data -->
-  <div class="post">
-    <div class="date">9 October 2026</div>
-    <h2>
-      <a href="posts/structured-data.html">
-        Structured Data — What It Is and Where It Lives
-      </a>
-    </h2>
-    <p>
-      From student spreadsheets to databases and data warehouses,
-      discover how structured data makes information easier to
-      organize, query, and analyse.
-    </p>
-    <a href="posts/structured-data.html">Read post →</a>
-  </div>
+  <div class="post-list group-reflections">
 
-  <!-- 7. Ratio Data -->
-  <div class="post">
-    <div class="date">8 October 2026</div>
-    <h2>
-      <a href="posts/ratio-data.html">
-        Ratio Data — When Zero Really Means Zero
-      </a>
-    </h2>
-    <p>
-      The final level of measurement: understanding true zero,
-      meaningful ratios, and the difference between interval and ratio data.
-    </p>
-    <a href="posts/ratio-data.html">Read post →</a>
-  </div>
+    <!-- Classroom Output -->
+    <div class="post post-item group-reflections">
+      <div class="post-meta-row">
+        <span class="date">19 September 2026</span>
+        <span class="post-tag">Pedagogy &amp; Education</span>
+      </div>
+      <h2>
+        <a href="posts/classroom-output.html">
+          The Most Important Output of a Classroom Is Not Marks
+        </a>
+      </h2>
+      <p>
+        On working for knowledge instead of marks, building beyond the syllabus, and turning classroom engineering projects into lifelong research and shared learning.
+      </p>
+      <a href="posts/classroom-output.html">Read essay →</a>
+    </div>
 
-  <!-- 6. Interval Data -->
-  <div class="post">
-    <div class="date">2 October 2026</div>
-    <h2>
-      <a href="posts/interval-data.html">
-        Interval Data — Understanding Equal Differences, But No True Zero
-      </a>
-    </h2>
-    <p>
-      What happens when values have order and equal, meaningful differences,
-      but zero does not represent the absence of the quantity?
-    </p>
-    <a href="posts/interval-data.html">Read post →</a>
-  </div>
+    <!-- Welcome Post -->
+    <div class="post post-item group-reflections">
+      <div class="post-meta-row">
+        <span class="date">16 September 2026</span>
+        <span class="post-tag">Welcome Note</span>
+      </div>
+      <h2>
+        <a href="posts/hello-world.html">
+          Starting this blog
+        </a>
+      </h2>
+      <p>
+        Why I'm writing here weekly — mostly short notes on ECG signal processing, deep learning papers I'm reading, and things that come up teaching ByteClassroom.
+      </p>
+      <a href="posts/hello-world.html">Read essay →</a>
+    </div>
 
-  <!-- 5. Ordinal Data -->
-  <div class="post">
-    <div class="date">30 September 2026</div>
-    <h2>
-      <a href="posts/ordinal-data.html">
-        Ordinal Data — Definition, Examples, and Difference from Nominal
-      </a>
-    </h2>
-    <p>
-      What happens when categories have a meaningful order?
-      Explore ordinal data, everyday examples, and how it differs
-      from nominal data.
-    </p>
-    <a href="posts/ordinal-data.html">Read post →</a>
-  </div>
+  </div><!-- /post-list (reflections) -->
 
-  <!-- 4. Nominal Data -->
-  <div class="post">
-    <div class="date">28 September 2026</div>
-    <h2>
-      <a href="posts/nominal-data.html">
-        Nominal Data — Definition, Examples, and When to Use
-      </a>
-    </h2>
-    <p>
-      A simple introduction to nominal data — categories, labels,
-      examples, numerical codes, and why understanding data types
-      matters before analysis.
-    </p>
-    <a href="posts/nominal-data.html">Read post →</a>
-  </div>
-
-  <!-- 3. Types of Data -->
-  <div class="post">
-    <div class="date">24 September 2026</div>
-    <h2>
-      <a href="posts/types-of-data.html">
-        Types of Data — Qualitative vs Quantitative
-      </a>
-    </h2>
-    <p>
-      Before analysing data, building models, or talking about AI,
-      we need to understand what kind of data we actually have.
-    </p>
-    <a href="posts/types-of-data.html">Read post →</a>
-  </div>
-
-  <!-- 2. Why Data? -->
-  <div class="post">
-    <div class="date">23 September 2026</div>
-    <h2>
-      <a href="posts/why-data.html">
-        Why Data? — Why Data Science and AI Became So Important
-      </a>
-    </h2>
-    <p>
-      Data is everywhere. But data alone is not knowledge.
-      A look at how data, questions, learning, and human thinking
-      connect to the rise of Data Science and AI.
-    </p>
-    <a href="posts/why-data.html">Read post →</a>
-  </div>
-
-  <!-- 1. Classroom Output -->
-  <div class="post">
-    <div class="date">19 September 2026</div>
-    <h2>
-      <a href="posts/classroom-output.html">
-        The Most Important Output of a Classroom Is Not Marks
-      </a>
-    </h2>
-    <p>
-      On working for knowledge instead of marks, building beyond the
-      syllabus, and turning classroom projects into research and
-      shared learning.
-    </p>
-    <a href="posts/classroom-output.html">Read post →</a>
-  </div>
-
-  <!-- Welcome Post -->
-  <div class="post">
-    <div class="date">16 September 2026</div>
-    <h2>
-      <a href="posts/hello-world.html">
-        Starting this blog
-      </a>
-    </h2>
-    <p>
-      Why I'm writing here weekly — mostly short notes on ECG signal
-      processing, deep learning papers I'm reading, and things that
-      come up teaching ByteClassroom.
-    </p>
-    <a href="posts/hello-world.html">Read post →</a>
-  </div>
-
-</div>
+</div><!-- /wrap -->
 
 <footer>
   <div class="wrap">
     <p>© 2026 Dr. Premanand S. · Waveforms &amp; Weights · Hosted on GitHub Pages</p>
   </div>
 </footer>
+
+<!-- Interactive Scripts for Category Filtering & Roadmap Hover Previews -->
+<script>
+  // Interactive Roadmap Preview
+  const roundButtons = document.querySelectorAll('.round-btn');
+  const previewChapter = document.getElementById('previewChapter');
+  const previewTitle = document.getElementById('previewTitle');
+  const previewBtn = document.getElementById('previewBtn');
+
+  roundButtons.forEach(btn => {
+    btn.addEventListener('mouseenter', () => {
+      const ch = btn.getAttribute('data-chapter');
+      const title = btn.getAttribute('data-title');
+      const desc = btn.getAttribute('data-desc');
+      const href = btn.getAttribute('href');
+
+      previewChapter.textContent = `Chapter ${ch} Preview:`;
+      previewTitle.textContent = `${title} — ${desc}`;
+      previewBtn.setAttribute('href', href);
+      previewBtn.textContent = `Read Chapter ${ch} →`;
+    });
+  });
+
+  // Category Filtering
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const phase1Elements = document.querySelectorAll('.group-phase1');
+  const reflectionElements = document.querySelectorAll('.group-reflections');
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      if (filter === 'all') {
+        phase1Elements.forEach(el => el.style.display = '');
+        reflectionElements.forEach(el => el.style.display = '');
+      } else if (filter === 'phase1') {
+        phase1Elements.forEach(el => el.style.display = '');
+        reflectionElements.forEach(el => el.style.display = 'none');
+      } else if (filter === 'reflections') {
+        phase1Elements.forEach(el => el.style.display = 'none');
+        reflectionElements.forEach(el => el.style.display = '');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
