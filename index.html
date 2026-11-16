@@ -373,30 +373,106 @@
     box-shadow: 0 4px 14px rgba(31, 100, 89, 0.2);
   }
 
-  /* =========================
-     ECG TRACE ANIMATION
-     ========================= */
-  .trace {
-    width: 100vw;
-    height: 85px;
-    margin-top: 36px;
+  /* =====================================
+     DYNAMIC REAL-TIME ECG SIGNAL COMPONENT
+     ===================================== */
+  .ecg-monitor-wrap {
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    overflow: visible;
+    width: 100vw;
+    max-width: 100%;
+    margin-top: 36px;
+    background: 
+      linear-gradient(to right, rgba(46, 140, 127, 0.05) 1px, transparent 1px) 0 0 / 24px 24px,
+      linear-gradient(to bottom, rgba(46, 140, 127, 0.05) 1px, transparent 1px) 0 0 / 24px 24px,
+      rgba(46, 140, 127, 0.02);
+    border-top: 1px solid rgba(46, 140, 127, 0.18);
+    border-bottom: 1px solid rgba(46, 140, 127, 0.18);
+    height: 92px;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
   }
-  .trace path {
-    fill: none;
-    stroke: var(--signal);
-    stroke-width: 2.2;
-    stroke-dasharray: 1800;
-    stroke-dashoffset: 1800;
-    animation: draw 3.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    filter: drop-shadow(0 2px 4px rgba(46, 140, 127, 0.25));
+
+  .ecg-badge {
+    position: absolute;
+    top: 8px;
+    right: 18px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--signal-dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(46, 140, 127, 0.25);
+    z-index: 5;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
   }
-  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .ecg-badge .pulse-dot-mini {
+    width: 6px;
+    height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    animation: ecgBadgePulse 1.8s infinite;
+  }
+  @keyframes ecgBadgePulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  }
+
+  .ecg-track {
+    display: flex;
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: flowSignal 8s linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes flowSignal {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+
+  .ecg-track svg {
+    width: 50%;
+    height: 100%;
+    flex-shrink: 0;
+  }
+
+  .ecg-sweep-beam {
+    position: absolute;
+    top: 0;
+    left: -150px;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(46, 140, 127, 0.15) 65%, rgba(56, 178, 160, 0.35) 100%);
+    border-right: 2px solid rgba(46, 140, 127, 0.6);
+    box-shadow: 4px 0 14px rgba(46, 140, 127, 0.25);
+    animation: sweepBeam 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  @keyframes sweepBeam {
+    0% { left: -150px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .trace path { animation: none; stroke-dashoffset: 0; }
+    .ecg-track { animation: none; }
+    .ecg-sweep-beam { display: none; }
   }
 
   /* =========================
@@ -1470,9 +1546,31 @@
     </a>
   </div>
 
-  <svg class="trace" viewBox="0 0 900 60" preserveAspectRatio="none">
-    <path d="M0,30 L120,30 L140,30 L150,10 L160,50 L170,5 L180,45 L190,30 L260,30 L280,30 L300,10 L310,50 L320,5 L330,45 L340,30 L420,30 L440,30 L460,10 L470,50 L480,5 L490,45 L500,30 L580,30 L600,30 L620,10 L630,50 L640,5 L650,45 L660,30 L740,30 L760,30 L780,10 L790,50 L800,5 L810,45 L820,30 L900,30"/>
-  </svg>
+  <!-- Live Dynamic Lead II ECG Signal Visualizer -->
+  <div class="ecg-monitor-wrap" title="Continuous Real-time Lead II ECG Signal — Dr. Premanand S. Research">
+    <div class="ecg-badge">
+      <span class="pulse-dot-mini"></span>
+      LEAD II ECG · 72 BPM · LIVE BIOSIGNAL
+    </div>
+    <div class="ecg-sweep-beam"></div>
+    <div class="ecg-track">
+      <!-- Unit 1 -->
+      <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="ecgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#2E8C7F" />
+            <stop offset="50%" stop-color="#1F6459" />
+            <stop offset="100%" stop-color="#2E8C7F" />
+          </linearGradient>
+        </defs>
+        <path d="M 0,50 L 50,50 C 60,50 66,42 72,42 C 78,42 84,50 94,50 L 120,50 L 128,56 L 140,10 L 152,75 L 164,50 L 195,50 C 210,50 222,34 232,34 C 242,34 250,50 265,50 L 400,50 L 450,50 C 460,50 466,42 472,42 C 478,42 484,50 494,50 L 520,50 L 528,56 L 540,10 L 552,75 L 564,50 L 595,50 C 610,50 622,34 632,34 C 642,34 650,50 665,50 L 800,50 L 850,50 C 860,50 866,42 872,42 C 878,42 884,50 894,50 L 920,50 L 928,56 L 940,10 L 952,75 L 964,50 L 995,50 C 1010,50 1022,34 1032,34 C 1042,34 1050,50 1065,50 L 1200,50" fill="none" stroke="url(#ecgGrad)" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+      </svg>
+      <!-- Unit 2 (Identical duplicate for seamless infinite loop) -->
+      <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+        <path d="M 0,50 L 50,50 C 60,50 66,42 72,42 C 78,42 84,50 94,50 L 120,50 L 128,56 L 140,10 L 152,75 L 164,50 L 195,50 C 210,50 222,34 232,34 C 242,34 250,50 265,50 L 400,50 L 450,50 C 460,50 466,42 472,42 C 478,42 484,50 494,50 L 520,50 L 528,56 L 540,10 L 552,75 L 564,50 L 595,50 C 610,50 622,34 632,34 C 642,34 650,50 665,50 L 800,50 L 850,50 C 860,50 866,42 872,42 C 878,42 884,50 894,50 L 920,50 L 928,56 L 940,10 L 952,75 L 964,50 L 995,50 C 1010,50 1022,34 1032,34 C 1042,34 1050,50 1065,50 L 1200,50" fill="none" stroke="url(#ecgGrad)" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" />
+      </svg>
+    </div>
+  </div>
 </div>
 
 <div class="stats wrap">
@@ -1609,18 +1707,22 @@
   <div class="blog-preview">
     <h3>Latest from the blog</h3>
     <div class="blog-post-list">
-      <a class="blog-post" href="https://anandprems.github.io/posts/types-of-data.html" target="_blank" rel="noopener noreferrer">
-        <div class="bp-date">24 September 2026</div>
-        <div class="bp-title">Types of Data — Qualitative vs Quantitative</div>
-        <p class="bp-desc">Before building models or talking about AI, the first question is simple: what kind of data do you actually have?</p>
+      <a class="blog-post" href="posts/primary-vs-secondary-data.html">
+        <div class="bp-date">16 November 2026</div>
+        <div class="bp-title">Data Sources — Primary vs Secondary Data: How Origin Dictates AI Reliability</div>
+        <p class="bp-desc">Data doesn’t just vary in shape — it varies in origin. Discover the critical difference between raw, first-hand clinical collections and secondary benchmark datasets like PhysioNet.</p>
       </a>
-      <a class="blog-post" href="https://anandprems.github.io/posts/why-data.html" target="_blank" rel="noopener noreferrer">
-        <div class="bp-date">23 September 2026</div>
-        <div class="bp-title">Why Data?</div>
-        <p class="bp-desc">Why data science and AI became so important — and the human thinking that still has to come first.</p>
+      <a class="blog-post" href="posts/semi-structured-data.html">
+        <div class="bp-date">12 November 2026</div>
+        <div class="bp-title">Semi-Structured Data — JSON, XML and Where They’re Used</div>
+        <p class="bp-desc">Not all data fits neatly into tables, nor is it completely unstructured. Discover how JSON and XML provide flexible schemas and power modern web APIs.</p>
       </a>
     </div>
-    <a href="blog.html">See all posts →</a>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:12px;font-size:0.92rem;">
+      <a href="blog.html#phase1" style="font-weight:600;color:var(--signal-dark);">Explore Phase 1: Foundations of Data (10 Chapters) →</a>
+      <span style="color:var(--muted);">·</span>
+      <a href="blog.html">See all posts →</a>
+    </div>
   </div>
 
   <div class="teaching-timeline">
